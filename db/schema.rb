@@ -10,6 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121232813) do
+ActiveRecord::Schema.define(version: 20171128203218) do
+
+  create_table "document_edits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "edit_type"
+    t.string "attribute_path"
+    t.string "value"
+    t.bigint "document_id"
+    t.index ["document_id"], name: "index_document_edits_on_document_id"
+  end
+
+  create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "table_name"
+  end
+
+  create_table "medications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "seo_flag"
+    t.string "experiment_group"
+    t.bigint "document_id"
+    t.index ["document_id"], name: "index_medications_on_document_id"
+  end
 
 end
