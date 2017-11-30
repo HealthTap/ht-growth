@@ -59,9 +59,10 @@ server 'nb3.healthtap.com', user: 'growth', roles: %w{web}
 set :deploy_to, '/home/growth/guest.healthtap.com'
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
-set :unicorn_rack_env, 'staging'
-set :unicorn_config_path, "#{deploy_to}/current/config/unicorn.rb"
+set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/staging.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :unicorn_roles, %w{web}
+set :unicorn_rack_env, 'development'
 
 # Unicorn control tasks
 namespace :deploy do
