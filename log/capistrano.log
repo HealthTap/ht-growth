@@ -2489,3 +2489,127 @@ Administrator. It usually boils down to these three things:
   INFO [fb710552] Running /usr/bin/env echo "Branch master (at 23315cd45ba14760a61ae853b8409a8a7b85b6f7) deployed as release 20171130214851 by jerryuejio" >> /home/growth/guest.healthtap.com/revisions.log as growth@nb3.healthtap.com
  DEBUG [fb710552] Command: cd /home/growth/guest.healthtap.com/releases && /usr/bin/env echo "Branch master (at 23315cd45ba14760a61ae853b8409a8a7b85b6f7) deployed as release 20171130214851 by jerryuejio" >> /home/growth/guest.healthtap.com/revisions.log
   INFO [fb710552] Finished in 0.024 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-11-30 13:49:10 -0800 cap staging deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [e65ca3d0] Running [ -d ~/.rvm ] as growth@nb3.healthtap.com
+ DEBUG [e65ca3d0] Command: [ -d ~/.rvm ]
+ DEBUG [e65ca3d0] Finished in 0.216 seconds with exit status 0 (successful).
+ DEBUG [107c2a25] Running ~/.rvm/bin/rvm version as growth@nb3.healthtap.com
+ DEBUG [107c2a25] Command: ~/.rvm/bin/rvm version
+ DEBUG [107c2a25] 	rvm 1.29.3 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [107c2a25] Finished in 0.181 seconds with exit status 0 (successful).
+ DEBUG [cbf16426] Running ~/.rvm/bin/rvm current as growth@nb3.healthtap.com
+ DEBUG [cbf16426] Command: ~/.rvm/bin/rvm current
+ DEBUG [cbf16426] 	ruby-2.3.3
+ DEBUG [cbf16426] Finished in 0.180 seconds with exit status 0 (successful).
+ DEBUG [7b23a942] Running ~/.rvm/bin/rvm 2.3.3 do ruby --version as growth@nb3.healthtap.com
+ DEBUG [7b23a942] Command: ~/.rvm/bin/rvm 2.3.3 do ruby --version
+ DEBUG [7b23a942] 	ruby 2.3.3p222 (2016-11-21 revision 56859) [x86_64-linux]
+ DEBUG [7b23a942] Finished in 0.284 seconds with exit status 0 (successful).
+  INFO [dafe583d] Running /usr/bin/env mkdir -p /tmp as growth@nb3.healthtap.com
+ DEBUG [dafe583d] Command: /usr/bin/env mkdir -p /tmp
+  INFO [dafe583d] Finished in 0.025 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-guest_app-staging-jerryuejio.sh 0.0%
+  INFO Uploading /tmp/git-ssh-guest_app-staging-jerryuejio.sh 100.0%
+  INFO [927f2735] Running /usr/bin/env chmod 700 /tmp/git-ssh-guest_app-staging-jerryuejio.sh as growth@nb3.healthtap.com
+ DEBUG [927f2735] Command: /usr/bin/env chmod 700 /tmp/git-ssh-guest_app-staging-jerryuejio.sh
+  INFO [927f2735] Finished in 0.023 seconds with exit status 0 (successful).
+  INFO [bfe5bbb4] Running /usr/bin/env git ls-remote git@github.com:jerry-uejio/ht-growth.git HEAD as growth@nb3.healthtap.com
+ DEBUG [bfe5bbb4] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-guest_app-staging-jerryuejio.sh" ; /usr/bin/env git ls-remote git@github.com:jerry-uejio/ht-growth.git HEAD )
+ DEBUG [bfe5bbb4] 	55f76b06a0aa1500a5b03df15512c737a6992cc8	HEAD
+  INFO [bfe5bbb4] Finished in 0.393 seconds with exit status 0 (successful).
+  INFO [56f13235] Running /usr/bin/env mkdir -p /home/growth/guest.healthtap.com/shared /home/growth/guest.healthtap.com/releases as growth@nb3.healthtap.com
+ DEBUG [56f13235] Command: /usr/bin/env mkdir -p /home/growth/guest.healthtap.com/shared /home/growth/guest.healthtap.com/releases
+  INFO [56f13235] Finished in 0.024 seconds with exit status 0 (successful).
+  INFO [91bb9ada] Running /usr/bin/env mkdir -p /home/growth/guest.healthtap.com/shared/config as growth@nb3.healthtap.com
+ DEBUG [91bb9ada] Command: /usr/bin/env mkdir -p /home/growth/guest.healthtap.com/shared/config
+  INFO [91bb9ada] Finished in 0.023 seconds with exit status 0 (successful).
+ DEBUG [f028e439] Running [ -f /home/growth/guest.healthtap.com/shared/config/database.yml ] as growth@nb3.healthtap.com
+ DEBUG [f028e439] Command: [ -f /home/growth/guest.healthtap.com/shared/config/database.yml ]
+ DEBUG [f028e439] Finished in 0.022 seconds with exit status 0 (successful).
+ DEBUG [55d94b14] Running [ -f /home/growth/guest.healthtap.com/current/REVISION ] as growth@nb3.healthtap.com
+ DEBUG [55d94b14] Command: [ -f /home/growth/guest.healthtap.com/current/REVISION ]
+ DEBUG [55d94b14] Finished in 0.022 seconds with exit status 0 (successful).
+ DEBUG [83d1a6b6] Running /usr/bin/env cat /home/growth/guest.healthtap.com/current/REVISION 2>/dev/null as growth@nb3.healthtap.com
+ DEBUG [83d1a6b6] Command: /usr/bin/env cat /home/growth/guest.healthtap.com/current/REVISION 2>/dev/null
+ DEBUG [83d1a6b6] 	23315cd45ba14760a61ae853b8409a8a7b85b6f7
+ DEBUG [83d1a6b6] Finished in 0.024 seconds with exit status 0 (successful).
+ DEBUG [03a53d8b] Running [ -f /home/growth/guest.healthtap.com/repo/HEAD ] as growth@nb3.healthtap.com
+ DEBUG [03a53d8b] Command: [ -f /home/growth/guest.healthtap.com/repo/HEAD ]
+ DEBUG [03a53d8b] Finished in 0.022 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/growth/guest.healthtap.com/repo
+ DEBUG [0a7d353f] Running if test ! -d /home/growth/guest.healthtap.com/repo; then echo "Directory does not exist '/home/growth/guest.healthtap.com/repo'" 1>&2; false; fi as growth@nb3.healthtap.com
+ DEBUG [0a7d353f] Command: if test ! -d /home/growth/guest.healthtap.com/repo; then echo "Directory does not exist '/home/growth/guest.healthtap.com/repo'" 1>&2; false; fi
+ DEBUG [0a7d353f] Finished in 0.021 seconds with exit status 0 (successful).
+  INFO [cbfabf89] Running /usr/bin/env git remote set-url origin git@github.com:jerry-uejio/ht-growth.git as growth@nb3.healthtap.com
+ DEBUG [cbfabf89] Command: cd /home/growth/guest.healthtap.com/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-guest_app-staging-jerryuejio.sh" ; /usr/bin/env git remote set-url origin git@github.com:jerry-uejio/ht-growth.git )
+  INFO [cbfabf89] Finished in 0.024 seconds with exit status 0 (successful).
+  INFO [cf7c4463] Running /usr/bin/env git remote update --prune as growth@nb3.healthtap.com
+ DEBUG [cf7c4463] Command: cd /home/growth/guest.healthtap.com/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-guest_app-staging-jerryuejio.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [cf7c4463] 	Fetching origin
+ DEBUG [cf7c4463] 	From github.com:jerry-uejio/ht-growth
+   23315cd..55f76b0  master     -> master
+  INFO [cf7c4463] Finished in 0.510 seconds with exit status 0 (successful).
+ DEBUG [65b07b63] Running if test ! -d /home/growth/guest.healthtap.com/repo; then echo "Directory does not exist '/home/growth/guest.healthtap.com/repo'" 1>&2; false; fi as growth@nb3.healthtap.com
+ DEBUG [65b07b63] Command: if test ! -d /home/growth/guest.healthtap.com/repo; then echo "Directory does not exist '/home/growth/guest.healthtap.com/repo'" 1>&2; false; fi
+ DEBUG [65b07b63] Finished in 0.022 seconds with exit status 0 (successful).
+  INFO [c68192ad] Running /usr/bin/env mkdir -p /home/growth/guest.healthtap.com/releases/20171130214912 as growth@nb3.healthtap.com
+ DEBUG [c68192ad] Command: cd /home/growth/guest.healthtap.com/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-guest_app-staging-jerryuejio.sh" ; /usr/bin/env mkdir -p /home/growth/guest.healthtap.com/releases/20171130214912 )
+  INFO [c68192ad] Finished in 0.024 seconds with exit status 0 (successful).
+  INFO [cf072873] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /home/growth/guest.healthtap.com/releases/20171130214912 as growth@nb3.healthtap.com
+ DEBUG [cf072873] Command: cd /home/growth/guest.healthtap.com/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-guest_app-staging-jerryuejio.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /home/growth/guest.healthtap.com/releases/20171130214912 )
+  INFO [cf072873] Finished in 0.027 seconds with exit status 0 (successful).
+ DEBUG [c3e50301] Running if test ! -d /home/growth/guest.healthtap.com/repo; then echo "Directory does not exist '/home/growth/guest.healthtap.com/repo'" 1>&2; false; fi as growth@nb3.healthtap.com
+ DEBUG [c3e50301] Command: if test ! -d /home/growth/guest.healthtap.com/repo; then echo "Directory does not exist '/home/growth/guest.healthtap.com/repo'" 1>&2; false; fi
+ DEBUG [c3e50301] Finished in 0.022 seconds with exit status 0 (successful).
+ DEBUG [d47f1174] Running /usr/bin/env git rev-list --max-count=1 master as growth@nb3.healthtap.com
+ DEBUG [d47f1174] Command: cd /home/growth/guest.healthtap.com/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-guest_app-staging-jerryuejio.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [d47f1174] 	55f76b06a0aa1500a5b03df15512c737a6992cc8
+ DEBUG [d47f1174] Finished in 0.024 seconds with exit status 0 (successful).
+ DEBUG [e209d449] Running if test ! -d /home/growth/guest.healthtap.com/releases/20171130214912; then echo "Directory does not exist '/home/growth/guest.healthtap.com/releases/20171130214912'" 1>&2; false; fi as growth@nb3.healthtap.com
+ DEBUG [e209d449] Command: if test ! -d /home/growth/guest.healthtap.com/releases/20171130214912; then echo "Directory does not exist '/home/growth/guest.healthtap.com/releases/20171130214912'" 1>&2; false; fi
+ DEBUG [e209d449] Finished in 0.022 seconds with exit status 0 (successful).
+  INFO [2a2704dc] Running /usr/bin/env echo "55f76b06a0aa1500a5b03df15512c737a6992cc8" >> REVISION as growth@nb3.healthtap.com
+ DEBUG [2a2704dc] Command: cd /home/growth/guest.healthtap.com/releases/20171130214912 && /usr/bin/env echo "55f76b06a0aa1500a5b03df15512c737a6992cc8" >> REVISION
+  INFO [2a2704dc] Finished in 0.023 seconds with exit status 0 (successful).
+  INFO [f33d3196] Running /usr/bin/env mkdir -p /home/growth/guest.healthtap.com/releases/20171130214912/config as growth@nb3.healthtap.com
+ DEBUG [f33d3196] Command: /usr/bin/env mkdir -p /home/growth/guest.healthtap.com/releases/20171130214912/config
+  INFO [f33d3196] Finished in 0.022 seconds with exit status 0 (successful).
+ DEBUG [ffd19b80] Running [ -L /home/growth/guest.healthtap.com/releases/20171130214912/config/database.yml ] as growth@nb3.healthtap.com
+ DEBUG [ffd19b80] Command: [ -L /home/growth/guest.healthtap.com/releases/20171130214912/config/database.yml ]
+ DEBUG [ffd19b80] Finished in 0.021 seconds with exit status 1 (failed).
+ DEBUG [2b8464be] Running [ -f /home/growth/guest.healthtap.com/releases/20171130214912/config/database.yml ] as growth@nb3.healthtap.com
+ DEBUG [2b8464be] Command: [ -f /home/growth/guest.healthtap.com/releases/20171130214912/config/database.yml ]
+ DEBUG [2b8464be] Finished in 0.021 seconds with exit status 1 (failed).
+  INFO [c91bceab] Running /usr/bin/env ln -s /home/growth/guest.healthtap.com/shared/config/database.yml /home/growth/guest.healthtap.com/releases/20171130214912/config/database.yml as growth@nb3.healthtap.com
+ DEBUG [c91bceab] Command: /usr/bin/env ln -s /home/growth/guest.healthtap.com/shared/config/database.yml /home/growth/guest.healthtap.com/releases/20171130214912/config/database.yml
+  INFO [c91bceab] Finished in 0.023 seconds with exit status 0 (successful).
+  INFO [6b4cf231] Running /usr/bin/env ln -s /home/growth/guest.healthtap.com/releases/20171130214912 /home/growth/guest.healthtap.com/releases/current as growth@nb3.healthtap.com
+ DEBUG [6b4cf231] Command: /usr/bin/env ln -s /home/growth/guest.healthtap.com/releases/20171130214912 /home/growth/guest.healthtap.com/releases/current
+  INFO [6b4cf231] Finished in 0.023 seconds with exit status 0 (successful).
+  INFO [04b16c46] Running /usr/bin/env mv /home/growth/guest.healthtap.com/releases/current /home/growth/guest.healthtap.com as growth@nb3.healthtap.com
+ DEBUG [04b16c46] Command: /usr/bin/env mv /home/growth/guest.healthtap.com/releases/current /home/growth/guest.healthtap.com
+  INFO [04b16c46] Finished in 0.023 seconds with exit status 0 (successful).
+ DEBUG [a28d6c27] Running /usr/bin/env ls -x /home/growth/guest.healthtap.com/releases as growth@nb3.healthtap.com
+ DEBUG [a28d6c27] Command: /usr/bin/env ls -x /home/growth/guest.healthtap.com/releases
+ DEBUG [a28d6c27] 	20171130201456	20171130201800	20171130202612	20171130204957	20171130214851
+20171130214912
+ DEBUG [a28d6c27] Finished in 0.022 seconds with exit status 0 (successful).
+  INFO Keeping 5 of 6 deployed releases on nb3.healthtap.com
+ DEBUG [3ed098e1] Running [ -d /home/growth/guest.healthtap.com/current ] as growth@nb3.healthtap.com
+ DEBUG [3ed098e1] Command: [ -d /home/growth/guest.healthtap.com/current ]
+ DEBUG [3ed098e1] Finished in 0.021 seconds with exit status 0 (successful).
+ DEBUG [1614d067] Running /usr/bin/env readlink /home/growth/guest.healthtap.com/current as growth@nb3.healthtap.com
+ DEBUG [1614d067] Command: /usr/bin/env readlink /home/growth/guest.healthtap.com/current
+ DEBUG [1614d067] 	/home/growth/guest.healthtap.com/releases/20171130214912
+ DEBUG [1614d067] Finished in 0.023 seconds with exit status 0 (successful).
+  INFO [28f1db50] Running /usr/bin/env rm -rf /home/growth/guest.healthtap.com/releases/20171130201456 as growth@nb3.healthtap.com
+ DEBUG [28f1db50] Command: /usr/bin/env rm -rf /home/growth/guest.healthtap.com/releases/20171130201456
+  INFO [28f1db50] Finished in 0.024 seconds with exit status 0 (successful).
+ DEBUG [0c6ac5f6] Running if test ! -d /home/growth/guest.healthtap.com/releases; then echo "Directory does not exist '/home/growth/guest.healthtap.com/releases'" 1>&2; false; fi as growth@nb3.healthtap.com
+ DEBUG [0c6ac5f6] Command: if test ! -d /home/growth/guest.healthtap.com/releases; then echo "Directory does not exist '/home/growth/guest.healthtap.com/releases'" 1>&2; false; fi
+ DEBUG [0c6ac5f6] Finished in 0.022 seconds with exit status 0 (successful).
+  INFO [78a1fad7] Running /usr/bin/env echo "Branch master (at 55f76b06a0aa1500a5b03df15512c737a6992cc8) deployed as release 20171130214912 by jerryuejio" >> /home/growth/guest.healthtap.com/revisions.log as growth@nb3.healthtap.com
+ DEBUG [78a1fad7] Command: cd /home/growth/guest.healthtap.com/releases && /usr/bin/env echo "Branch master (at 55f76b06a0aa1500a5b03df15512c737a6992cc8) deployed as release 20171130214912 by jerryuejio" >> /home/growth/guest.healthtap.com/revisions.log
+  INFO [78a1fad7] Finished in 0.023 seconds with exit status 0 (successful).
