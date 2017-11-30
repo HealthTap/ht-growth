@@ -57,20 +57,21 @@ server 'nb3.healthtap.com', user: 'growth', roles: %w{web}
 #   }
 
 set :deploy_to, '/home/growth/guest.healthtap.com'
+set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
-set :rack_env, 'staging'
-set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
+set :unicorn_rack_env, 'staging'
+set :unicorn_config_path, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 # Unicorn control tasks
 namespace :deploy do
   task :restart do
-    run "if [ -f #{@unicorn_pid} ]; then kill -USR2 `cat #{@unicorn_pid}`; else cd #{@deploy_to}/current && bundle exec unicorn -c #{@unicorn_conf} -E #{@rack_env} -D; fi"
+    invoke 'unicorn:restart'
   end
   task :start do
-    run "cd #{@deploy_to}/current && bundle exec unicorn -c #{@unicorn_conf} -E #{@rack_env} -D"
+    invoke 'unicorn:start'
   end
   task :stop do
-    run "if [ -f #{@unicorn_pid} ]; then kill -QUIT `cat #{@unicorn_pid}`; fi"
+    invoke 'unicorn:stop'
   end
 end

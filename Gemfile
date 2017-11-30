@@ -15,7 +15,10 @@ gem 'sinatra-cross_origin', '0.4.0'
 gem 'unicorn', '5.3.1'
 
 group :development do
+  gem 'capistrano', '3.10.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-unicorn-nginx', '4.1.0'
   gem 'shotgun', '0.9.2'
   gem 'simplecov', '0.15.1'
-  gem 'capistrano', '3.10.0'
 end

@@ -13,6 +13,7 @@ Dir["#{File.dirname(__FILE__)}/models/**/*.rb"].sort.each do |path|
 end
 
 set :bind, '0.0.0.0'
+set :port, 80
 set :database_file, './config/database.yml'
 
 # API routes
@@ -27,7 +28,7 @@ class App < Sinatra::Base
   set :nosql, settings.send(settings.environment.to_s)[:nosql]
 
   before do
-    error 401 unless params[:key] == ENV['API_KEY']
+    #error 401 unless params[:key] == ENV['API_KEY']
     content_type :json
   end
 
