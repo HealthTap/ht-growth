@@ -1,0 +1,17 @@
+common: &common
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  #socket: /tmp/mysql.sock
+  username: root
+  password: root
+  host: mysql
+
+development:
+  <<: *common
+  database: ht_growth_development
+
+test: &test
+  <<: *common
+  database: ht_growth_test<%= ENV['TEST_ENV_NUMBER'] %>

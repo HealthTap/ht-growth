@@ -1,0 +1,32 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: rackup -p 4567 --host 0.0.0.0
+    volumes:
+      - .:/home/app
+    environment:
+      API_KEY: fake_key
+      RACK_ENV: development
+    ports:
+      - "4567:4567"
+    links:
+      - mysql
+      - consul
+  mysql:
+    image: mysql:5.7.18
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d\
+  consul:
+    image: consul:latest
+    hostname: "consul"
+    ports:
+      - "8400:8400"
+      - "8500:8500"
+      - "8600"
+    volumes:
+      - ./volumes/consul:/consul 

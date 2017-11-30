@@ -1,6 +1,6 @@
 common_settings: &common_settings
   consul:
-    uri: http://127.0.0.1:8500/v1
+    uri: http://localhost:8500/v1
     ttl: 180                    # seconds
   nosql:
     table_prefix: guest-development-
@@ -10,6 +10,6 @@ development:
 
 test:
   <<: *common_settings
-  
+
 production:
   <<: *common_settings

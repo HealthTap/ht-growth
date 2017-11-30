@@ -1,0 +1,64 @@
+version: '2'
+services:
+  # Consul (service discovery)
+  consul:
+    image: consul:latest
+
+    volumes:
+      - ./volumes/consul/config:/consul/config # You can edit consul.json to customise consul behaviour
+
+    network_mode: bridge
+    ports:
+      - 8400:8400
+      - 8500:8500
+      - 8600:8600/udp
+
+    entrypoint: consul agent -server -config-dir=/consul/config
+
+    labels:
+      - SERVICE_IGNORE # Tell Registrator to ignore this container
+
+  # Registrator (register containers as services in Consul)
+  registrator:
+    depends_on:
+      - consul
+
+    image: gliderlabs/registrator:v7
+
+    network_mode: bridge
+    links:
+      - consul:consul
+
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+
+    # Thanks to the link above, the Consul container's IP can can resolved using the host name "consul"
+    entrypoint: /bin/registrator consul://consul:8500
+
+  fabio:
+    depends_on:
+      - consul
+
+    image: magiconair/fabio:1.3-go1.7.1
+
+    network_mode: bridge
+    ports:
+      - 5000:5000
+      - 5001:5001
+
+    links:
+      - consul:consul
+
+    volumes:
+      - ./volumes/fabio/fabio.properties:/etc/fabio/fabio.properties
+
+  # Our API end-point (v1).
+  app:
+    depends_on:
+      - registrator
+
+    build: .
+
+    network_mode: bridge
+    ports:
+      - 4567:4567

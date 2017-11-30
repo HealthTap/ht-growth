@@ -12,7 +12,10 @@ gem 'sinatra', '2.0.0'
 gem 'sinatra-activerecord', '2.0.13'
 gem 'sinatra-contrib', '2.0.0'
 gem 'sinatra-cross_origin', '0.4.0'
+gem 'unicorn', '5.3.1'
 
 group :development do
   gem 'shotgun', '0.9.2'
+  gem 'simplecov', '0.15.1'
+  gem 'capistrano', '3.10.0'
 end

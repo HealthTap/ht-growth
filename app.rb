@@ -12,6 +12,7 @@ Dir["#{File.dirname(__FILE__)}/models/**/*.rb"].sort.each do |path|
   require path
 end
 
+set :bind, '0.0.0.0'
 set :database_file, './config/database.yml'
 
 # API routes
@@ -30,8 +31,12 @@ class App < Sinatra::Base
     content_type :json
   end
 
+  get '/' do
+    'success!'
+  end
+
   get '/medications/:name' do
-    Medication.find_by_name(params[:name])&.overview
+    Medication.find_by_name(params[:name])&.overview.to_json
   end
 
   # TODO: Endpoints for writing medication data

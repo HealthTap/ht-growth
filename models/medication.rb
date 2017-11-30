@@ -18,6 +18,6 @@ class Medication < ActiveRecord::Base
   end
 
   def overview
-    document.contents.to_json
+    document.contents
   end
 end

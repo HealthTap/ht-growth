@@ -8,14 +8,21 @@ describe Medication do
     end
 
     it 'should have a name' do
-      m = Medication.create name: 'fluoxetine'
+      m = Medication.create name: 'test_medication'
       expect(m.valid?).to be true
-      expect(m.name).to eq('fluoxetine')
+      expect(m.name).to eq('test_medication')
     end
 
     it 'should have a document associated with it' do
-      m = Medication.create name: 'fluoxetine'
-      expect(m.document.name).to eq('fluoxetine')
+      m = Medication.create name: 'test_medication'
+      expect(m.document.name).to eq('test_medication')
+    end
+  end
+  describe 'get data for each content section' do
+    it 'should have an overview' do
+      m = Medication.create name: 'test_medication'
+      m.document.overwrite(brand_name: 'prozac')
+      expect(m.overview['brand_name']).to eq 'prozac'
     end
   end
 end

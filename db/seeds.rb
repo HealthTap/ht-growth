@@ -1,0 +1,1 @@
+Medication.create(name: 'fluoxetine')

@@ -1,6 +1,9 @@
 ENV['RACK_ENV'] = 'test'
 
 require 'database_cleaner'
+require 'simplecov'
+SimpleCov.start
+
 require File.expand_path '../../app.rb', __FILE__
 
 RSpec.configure do |config|
