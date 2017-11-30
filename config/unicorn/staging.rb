@@ -8,7 +8,7 @@ err_log = "#{app_root}/log/unicorn_error.log"
 old_pid = pid_file + '.oldbin'
 
 timeout 200
-worker_processes 1 # increase or decrease
+worker_processes 4 # increase or decrease
 listen socket_file, :backlog => 512
 
 pid pid_file
@@ -20,7 +20,7 @@ preload_app true
 
 # make sure that Bundler finds the Gemfile
 before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{@deploy_to}/current/Gemfile"
+  ENV['BUNDLE_GEMFILE'] = "#{deploy_to}/current/Gemfile"
 end
 
 before_fork do |server, worker|
