@@ -12,11 +12,15 @@ class Document < ActiveRecord::Base
     Healthtap::NoSql.get_item(table_name, name: name)
   end
 
-  def overwrite(new_json)
+  def sanitize_for_nosql(content)
+
+  end
+
+  def overwrite(new_content)
     item = {
       name: name
     }
-    item.merge!(new_json)
+    item.merge!(new_content)
     Healthtap::NoSql.put_item(table_name, item)
   end
 

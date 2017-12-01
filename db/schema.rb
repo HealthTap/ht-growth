@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128203218) do
+ActiveRecord::Schema.define(version: 20171201015804) do
 
   create_table "document_edits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "edit_type"
@@ -25,12 +25,26 @@ ActiveRecord::Schema.define(version: 20171128203218) do
     t.string "table_name"
   end
 
+  create_table "medication_interactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "interacts_with_rxcui"
+    t.integer "ingredient_rxcui"
+    t.integer "rank"
+    t.string "severity"
+    t.text "description"
+    t.bigint "medication_id"
+    t.index ["medication_id"], name: "index_medication_interactions_on_medication_id"
+  end
+
   create_table "medications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "seo_flag"
     t.string "experiment_group"
     t.bigint "document_id"
     t.index ["document_id"], name: "index_medications_on_document_id"
+  end
+
+  create_table "rxcui_lookups", primary_key: "rxcui", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "name"
   end
 
 end

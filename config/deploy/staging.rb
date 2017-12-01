@@ -18,7 +18,7 @@
 # Don't use `:all`, it's a meta role.
 
 role :web, %w{growth@nb3.healthtap.com}
-
+role :db, %w{growth@nb3.healthtap.com}
 
 
 # Configuration
@@ -47,7 +47,7 @@ role :web, %w{growth@nb3.healthtap.com}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server 'nb3.healthtap.com', user: 'growth', roles: %w{web}
+server 'nb3.healthtap.com', user: 'growth', roles: %w{web db}
 #   ssh_options: {
 #     user: "user_name", # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),

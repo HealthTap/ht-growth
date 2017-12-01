@@ -1,6 +1,8 @@
 require 'json'
+require 'oj'
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'activerecord-import'
 require 'sinatra/config_file'
 require 'aws-sdk-dynamodb'
 
@@ -12,6 +14,7 @@ Dir["#{File.dirname(__FILE__)}/models/**/*.rb"].sort.each do |path|
   require path
 end
 
+set :root, File.dirname(__FILE__)
 set :bind, '0.0.0.0'
 set :port, 80
 set :database_file, './config/database.yml'
@@ -28,8 +31,12 @@ class App < Sinatra::Base
   set :nosql, settings.send(settings.environment.to_s)[:nosql]
 
   before do
-    #error 401 unless params[:key] == ENV['API_KEY']
+    error 401 unless params[:api_key] == 'fake_key_replace_later'
     content_type :json
+  end
+
+  after do
+    body Oj.dump response.body
   end
 
   get '/' do
@@ -37,8 +44,17 @@ class App < Sinatra::Base
   end
 
   get '/medications/:name' do
-    Medication.find_by_name(params[:name])&.overview.to_json
+    Medication.find_by_name(params[:name])&.overview
   end
 
-  # TODO: Endpoints for writing medication data
+  # Format { medication_name: [list of interaction objects] }
+  # Interaction must have a ingredient_rxcui, interacts_with_rxcui and severity
+  # May also have a rank, for display ordering purposes
+  post '/medications/:name/reset-interactions' do
+    data = Oj.load request.body.read
+    data.each do |name, interactions_data|
+      Medication.find_by_name(name)&.create_interactions(interactions_data)
+    end
+  end
+
 end
