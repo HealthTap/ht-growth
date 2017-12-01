@@ -15,8 +15,8 @@ class MedicationInteraction < ActiveRecord::Base
 
   def to_hash
     {
-      'ingredient' => RxcuiLookup.find_by_rxcui(ingredient_rxcui),
-      'interacts_with' => RxcuiLookup.find_by_rxcui(interacts_with_rxcui),
+      'ingredient' => RxcuiLookup.find_by_rxcui(ingredient_rxcui).name,
+      'interacts_with' => RxcuiLookup.find_by_rxcui(interacts_with_rxcui).name,
       'severity' => severity
     }
   end

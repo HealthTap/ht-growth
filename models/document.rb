@@ -4,22 +4,38 @@
 # All changes are logged and should be able to be replayed (document rebase)
 # Option to build change approval here
 class Document < ActiveRecord::Base
-  validates_presence_of :name, :table_name
-  validates_uniqueness_of :name
+  validates_presence_of :document_key, :table_name
+  validates_uniqueness_of :document_key
   has_many :document_edits
 
   def contents
-    Healthtap::NoSql.get_item(table_name, name: name)
+    Healthtap::NoSql.get_item(table_name, document_key: document_key)
   end
 
-  def sanitize_for_nosql(content)
+  # Dynamo rejects nil attribute values
+  def sanitize_for_dynamo(content)
+    if content.is_a?(Array)
+      content.delete_if do |e|
+        sanitize_for_dynamo(e)
+        bad_dynamo_value(e)
+      end
+    elsif content.is_a?(Hash)
+      content.delete_if do |_k, v|
+        sanitize_for_dynamo(v)
+        bad_dynamo_value(v)
+      end
+    end
+  end
 
+  def bad_dynamo_value(e)
+    e.nil? || (e.respond_to?(:empty?) && e.empty?)
   end
 
   def overwrite(new_content)
     item = {
-      name: name
+      document_key: document_key
     }
+    sanitize_for_dynamo(new_content)
     item.merge!(new_content)
     Healthtap::NoSql.put_item(table_name, item)
   end

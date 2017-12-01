@@ -5,6 +5,7 @@ require 'sinatra/activerecord'
 require 'activerecord-import'
 require 'sinatra/config_file'
 require 'aws-sdk-dynamodb'
+require 'zlib'
 
 Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].sort.each do |path|
   require path
@@ -43,17 +44,17 @@ class App < Sinatra::Base
     'success!'
   end
 
-  get '/medications/:name' do
-    Medication.find_by_name(params[:name])&.overview
+  get '/medications/:rxcui' do
+    Medication.find_by_rxcui(params[:rxcui].to_i)&.overview
   end
 
   # Format { medication_name: [list of interaction objects] }
   # Interaction must have a ingredient_rxcui, interacts_with_rxcui and severity
   # May also have a rank, for display ordering purposes
-  post '/medications/:name/reset-interactions' do
+  post '/medications/:rxcui/reset-interactions' do
     data = Oj.load request.body.read
-    data.each do |name, interactions_data|
-      Medication.find_by_name(name)&.create_interactions(interactions_data)
+    interactions_json.each do |rxcui, interactions_data|
+      Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
     end
   end
 

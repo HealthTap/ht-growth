@@ -6,14 +6,13 @@ require 'activerecord-import'
 # Seed files
 seeds_directory = "#{App.settings.root}/lib/seeds"
 
-# Create a medication
-Medication.create(name: 'Fluoxetine')
-Medication.create(name: 'Tribenzor')
+# Create Tribenzor
+Medication.create(name: 'tribenzor', rxcui: 1000001)
 
 # Populate Tribenzor with some content
 puts 'Uploading Tribenzor data'
 tribenzor_filename = "#{seeds_directory}/sample_document_tribenzor.json"
-tribenzor = Medication.find_by_name('Tribenzor')
+tribenzor = Medication.find_by_name('tribenzor')
 tribenzor.document.overwrite(Oj.load(File.read(tribenzor_filename)))
 
 # Creating Rxcui lookups
@@ -33,6 +32,6 @@ end
 puts 'Uploading sample interactions'
 interactions_file = "#{seeds_directory}/interactions_sample.json"
 interactions_json = Oj.load File.read(interactions_file)
-interactions_json.each do |name, interactions_data|
-  Medication.find_by_name(name)&.create_interactions(interactions_data)
+interactions_json.each do |rxcui, interactions_data|
+  Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
 end

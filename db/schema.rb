@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 20171201015804) do
     t.index ["document_id"], name: "index_document_edits_on_document_id"
   end
 
-  create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
+  create_table "documents", primary_key: "document_key", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "table_name"
   end
 
@@ -36,6 +35,7 @@ ActiveRecord::Schema.define(version: 20171201015804) do
   end
 
   create_table "medications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "rxcui"
     t.string "name"
     t.string "seo_flag"
     t.string "experiment_group"

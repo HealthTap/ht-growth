@@ -4,7 +4,7 @@ class DocumentEdit < ActiveRecord::Base
   validates_presence_of :edit_type, :attribute_path
   serialize :value
   belongs_to :document
-
+  
   # Execute atomic change. Should return 0 if successful
   def execute_change
     alias_mapping, alias_str = attribute_alias
