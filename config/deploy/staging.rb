@@ -58,7 +58,7 @@ server 'nb3.healthtap.com', user: 'growth', roles: %w{web}
 
 set :deploy_to, '/home/growth/guest.healthtap.com'
 set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{tmp/pids}
+set :linked_dirs, %w{log tmp/pids}
 
 set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/staging.rb"
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
