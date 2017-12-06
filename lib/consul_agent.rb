@@ -75,28 +75,5 @@ module ConsulAgent
         '"cp config/local_app_config.yml_sample config/local_app_config.yml"' if @env == 'development'
       raise ex
     end
-
-    def nodes_for_service(service)
-      return [] if @env == 'test'
-      resp = self.class.public_send(:get, "/catalog/service/#{service}")
-      return [] unless resp.code < 300
-      resp.parsed_response
-    rescue Errno::ECONNREFUSED => ex
-      puts 'Not able to connect to Consul service. ' \
-        'Please install and run it locally by executing script/dev_prep.sh or use the shared service by running ' \
-        '"cp config/local_app_config.yml_sample config/local_app_config.yml"' if @env == 'development'
-      raise ex
-    end
-
-    def available_nodes_for_service(service)
-      self.nodes_for_service(service).map{|n| {host: n['ServiceAddress'], port: n['ServicePort']} }
-    end
-
-    private
-
-    def deep_merge(hash1, hash2)
-      return hash2 if hash1.nil?
-      hash1.deep_merge(hash2)
-    end
   end
 end

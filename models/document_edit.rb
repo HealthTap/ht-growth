@@ -4,7 +4,7 @@ class DocumentEdit < ActiveRecord::Base
   validates_presence_of :edit_type, :attribute_path
   serialize :value
   belongs_to :document
-  
+
   # Execute atomic change. Should return 0 if successful
   def execute_change
     alias_mapping, alias_str = attribute_alias
@@ -23,6 +23,7 @@ class DocumentEdit < ActiveRecord::Base
   end
 
   # Returns alias name mapping and combined expression for dynamodb request
+  # TODO: This probably could be done better...
   def attribute_alias
     alias_mapping = {}
     alias_str = ''
@@ -39,8 +40,7 @@ class DocumentEdit < ActiveRecord::Base
     [alias_mapping, alias_str[0..-2]]
   end
 
-  # Replacement value as dynamodb does not allow add/delete for nested
-  # attributes
+  # Replacement value as dynamodb doesn't allow add/delete for nested attributes
   def replacement_value
     case edit_type
     when 'SET'
@@ -54,18 +54,22 @@ class DocumentEdit < ActiveRecord::Base
     end
   end
 
+  # Get initial value of the attribute this edit is supposed to mutate
   def attribute_value
     alias_mapping, projection_expression = attribute_alias
     params = {
       expression_attribute_names: alias_mapping,
       projection_expression: projection_expression
     }
-    Healthtap::NoSql.get_item(document.table_name, { name: document.name },
+    Healthtap::NoSql.get_item(document.table_name,
+                              { document_key: document.document_key },
                               params).values[0] || []
   end
 
+  # Replace attribute in dynamo document with new value
   def update_item(params)
-    Healthtap::NoSql.update_item(document.table_name, { name: document.name },
+    Healthtap::NoSql.update_item(document.table_name,
+                                 { document_key: document.document_key },
                                  params)
   end
 end

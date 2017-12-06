@@ -4,12 +4,12 @@ require File.expand_path '../../spec_helper.rb', __FILE__
 describe Document do
   describe 'write a medication document' do
     it 'should write and read to dynamo' do
-      d = Document.create name: 'test_medication', table_name: 'medications'
+      d = Document.create document_key: 0, table_name: 'medications'
       d.overwrite(brand_name: 'prozac')
       expect(d.contents['brand_name']).to eq('prozac')
     end
     it 'should read nested attributes' do
-      d = Document.create name: 'fluoxetine', table_name: 'medications'
+      d = Document.create document_key: 0, table_name: 'medications'
       interaction = 'May experience depression when taking prozac with advil'
       new_json = {
         'brand_name' => 'prozac',
@@ -23,7 +23,7 @@ describe Document do
   end
   describe 'edit a medication document' do
     it 'should set an attribute' do
-      d = Document.create name: 'test_medication', table_name: 'medications'
+      d = Document.create document_key: 0, table_name: 'medications'
       new_json = {
         'brand_name' => 'nozac'
       }
@@ -32,7 +32,7 @@ describe Document do
       expect(d.contents['brand_name']).to eq('prozac')
     end
     it 'should set a nested attribute' do
-      d = Document.create name: 'test_medication', table_name: 'medications'
+      d = Document.create document_key: 0, table_name: 'medications'
       new_json = {
         'brand_name' => 'nozac',
         'dose_forms' => [
@@ -46,7 +46,7 @@ describe Document do
       expect(d.contents['dose_forms'][1]['dosage']).to eq('30ml')
     end
     it 'should add to an array' do
-      d = Document.create name: 'test_medication', table_name: 'medications'
+      d = Document.create document_key: 0, table_name: 'medications'
       new_json = {
         'brand_name' => 'nozac',
         'dose_forms' => [
@@ -61,7 +61,7 @@ describe Document do
       expect(d.contents['dose_forms'][-1]['form']).to eq('syrup')
     end
     it 'should delete from an array' do
-      d = Document.create name: 'test_medication', table_name: 'medications'
+      d = Document.create document_key: 0, table_name: 'medications'
       new_json = {
         'brand_name' => 'nozac',
         'dose_forms' => [
@@ -76,7 +76,7 @@ describe Document do
       expect(d.contents['dose_forms'].count).to eq(2)
     end
     it 'should remove attribute' do
-      d = Document.create name: 'test_medication', table_name: 'medications'
+      d = Document.create document_key: 0, table_name: 'medications'
       new_json = {
         'brand_name' => 'nozac',
         'dose_forms' => [
@@ -92,7 +92,7 @@ describe Document do
   end
   describe 'replay changes' do
     it 'should replay changes over an overwrite' do
-      d = Document.create name: 'test_medication', table_name: 'medications'
+      d = Document.create document_key: 0, table_name: 'medications'
       d.overwrite(brand_name: 'advil')
       d.add_to_array('interactions', alcohol: "don't drink, kids")
       d.add_to_array('interactions', heroin: "don't do drugs, kids")
@@ -105,11 +105,11 @@ describe Document do
     end
   end
   describe 'error scenarios' do
-    it "malformed expression" do
-      d = Document.create name: 'test_medication', table_name: 'medications'
+    it 'malformed expression' do
+      d = Document.create document_key: 0, table_name: 'medications'
       d.overwrite(brand_name: 'advil')
       message = d.update_content('brand_name[dose_forms]', 1)
-      expect(message).to eq("Change failed")
+      expect(message).to eq('Change failed')
     end
   end
 end

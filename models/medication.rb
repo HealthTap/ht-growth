@@ -2,8 +2,8 @@
 # Should have a document with static content
 # Also includes meta data around medication i.e. seo rules, experiments, etc
 class Medication < ActiveRecord::Base
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  validates_presence_of :name, :rxcui
+  validates_uniqueness_of :name, :rxcui
   belongs_to :document
   has_many :medication_interactions
 
@@ -47,16 +47,17 @@ class Medication < ActiveRecord::Base
     interactions_data.each do |interaction|
       ingredient_rxcui = interaction['ingredient_rxcui'].to_i
       interacts_with_rxcui = interaction['interacts_with_rxcui'].to_i
-      next unless RxcuiLookup.find_by_rxcui(interacts_with_rxcui)
-      next unless RxcuiLookup.find_by_rxcui(ingredient_rxcui)
+      rank = interaction['rank']&.to_i
       mi = MedicationInteraction.new(interacts_with_rxcui: interacts_with_rxcui,
                                      ingredient_rxcui: ingredient_rxcui,
                                      severity: interaction['severity'],
                                      description: interaction['description'],
+                                     rank: rank,
                                      medication: self)
       new_interactions << mi
     end
     import_data = MedicationInteraction.import new_interactions
+    medication_interactions << new_interactions
     first_failed = import_data.failed_instances.slice(0, 4)
     "#{import_data.num_inserts} inserted, failures: #{first_failed}..."
   end
