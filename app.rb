@@ -1,6 +1,7 @@
 require 'json'
 require 'oj'
 require 'sinatra'
+require "sinatra/namespace"
 require 'sinatra/activerecord'
 require 'activerecord-import'
 require 'sinatra/config_file'
@@ -45,7 +46,6 @@ class App < Sinatra::Base
   end
 
   namespace '/api/guest' do
-
     get '/medications/:rxcui' do
       Medication.find_by_rxcui(params[:rxcui].to_i)&.overview
     end
@@ -59,7 +59,6 @@ class App < Sinatra::Base
         Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
       end
     end
-
   end
 
 end
