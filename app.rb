@@ -44,18 +44,22 @@ class App < Sinatra::Base
     'success!'
   end
 
-  get '/medications/:rxcui' do
-    Medication.find_by_rxcui(params[:rxcui].to_i)&.overview
-  end
+  namespace '/api/guest' do
 
-  # Format { medication_name: [list of interaction objects] }
-  # Interaction must have a ingredient_rxcui, interacts_with_rxcui and severity
-  # May also have a rank, for display ordering purposes
-  post '/medications/:rxcui/reset-interactions' do
-    data = Oj.load request.body.read
-    interactions_json.each do |rxcui, interactions_data|
-      Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
+    get '/medications/:rxcui' do
+      Medication.find_by_rxcui(params[:rxcui].to_i)&.overview
     end
+
+    # Format { medication_name: [list of interaction objects] }
+    # Interaction must have a ingredient_rxcui, interacts_with_rxcui and severity
+    # May also have a rank, for display ordering purposes
+    post '/medications/:rxcui/reset-interactions' do
+      data = Oj.load request.body.read
+      interactions_json.each do |rxcui, interactions_data|
+        Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
+      end
+    end
+
   end
 
 end
