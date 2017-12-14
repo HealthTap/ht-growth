@@ -35,7 +35,7 @@ class App < Sinatra::Base
   configure do
     enable :cross_origin
   end
-  
+
   before do
     # error 401 unless params[:api_key] == 'fake_key_replace_later'
     content_type :json
@@ -61,5 +61,12 @@ class App < Sinatra::Base
     interactions_json.each do |rxcui, interactions_data|
       Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
     end
+  end
+
+  options "*" do
+    response.headers["Allow"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    200
   end
 end
