@@ -38,6 +38,7 @@ class App < Sinatra::Base
 
   before do
     # error 401 unless params[:api_key] == 'fake_key_replace_later'
+    response.headers['Access-Control-Allow-Origin'] = '*'
     content_type :json
   end
 
