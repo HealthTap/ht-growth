@@ -1,7 +1,7 @@
 require 'json'
 require 'oj'
 require 'sinatra'
-require "sinatra/namespace"
+require 'sinatra/namespace'
 require 'sinatra/activerecord'
 require 'activerecord-import'
 require 'sinatra/config_file'
@@ -25,6 +25,7 @@ set :database_file, './config/database.yml'
 class App < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   register Sinatra::ConfigFile
+  register Sinatra::Namespace
 
   config_file 'config/app_config.yml'
   set :consul_settings,
