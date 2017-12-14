@@ -32,7 +32,7 @@ class App < Sinatra::Base
   set :nosql, settings.send(settings.environment.to_s)[:nosql]
 
   before do
-    error 401 unless params[:api_key] == 'fake_key_replace_later'
+    # error 401 unless params[:api_key] == 'fake_key_replace_later'
     content_type :json
   end
 
