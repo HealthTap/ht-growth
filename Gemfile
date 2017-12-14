@@ -12,7 +12,7 @@ gem 'rake', '12.3.0'
 gem 'rspec', '3.7.0'
 gem 'sinatra', '2.0.0'
 gem 'sinatra-activerecord', '2.0.13'
-gem 'sinatra-contrib', '2.0.0'
+gem 'sinatra-contrib', '2.0.0', require: false
 gem 'sinatra-cross_origin', '0.4.0'
 gem 'unicorn', '5.3.1'
 

@@ -1,3 +1,5 @@
 require_relative './app'
 
-run App
+map '/api/guest/' do
+  run App
+end

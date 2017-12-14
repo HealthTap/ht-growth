@@ -1,7 +1,6 @@
 require 'json'
 require 'oj'
 require 'sinatra'
-require 'sinatra/namespace'
 require 'sinatra/activerecord'
 require 'activerecord-import'
 require 'sinatra/config_file'
@@ -25,7 +24,6 @@ set :database_file, './config/database.yml'
 class App < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   register Sinatra::ConfigFile
-  register Sinatra::Namespace
 
   config_file 'config/app_config.yml'
   set :consul_settings,
@@ -46,20 +44,17 @@ class App < Sinatra::Base
     'success!'
   end
 
-  namespace '/api/guest' do
-    get '/medications/:rxcui' do
-      Medication.find_by_rxcui(params[:rxcui].to_i)&.overview
-    end
-
-    # Format { medication_name: [list of interaction objects] }
-    # Interaction must have a ingredient_rxcui, interacts_with_rxcui and severity
-    # May also have a rank, for display ordering purposes
-    post '/medications/:rxcui/reset-interactions' do
-      data = Oj.load request.body.read
-      interactions_json.each do |rxcui, interactions_data|
-        Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
-      end
-    end
+  get '/medications/:rxcui' do
+    Medication.find_by_rxcui(params[:rxcui].to_i)&.overview
   end
 
+  # Format { medication_name: [list of interaction objects] }
+  # Interaction must have a ingredient_rxcui, interacts_with_rxcui and severity
+  # May also have a rank, for display ordering purposes
+  post '/medications/:rxcui/reset-interactions' do
+    data = Oj.load request.body.read
+    interactions_json.each do |rxcui, interactions_data|
+      Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
+    end
+  end
 end
