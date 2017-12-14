@@ -2,6 +2,7 @@ require 'json'
 require 'oj'
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'sinatra/cross_origin'
 require 'activerecord-import'
 require 'sinatra/config_file'
 require 'aws-sdk-dynamodb'
@@ -31,6 +32,10 @@ class App < Sinatra::Base
                             settings.send(settings.environment.to_s))
   set :nosql, settings.send(settings.environment.to_s)[:nosql]
 
+  configure do
+    enable :cross_origin
+  end
+  
   before do
     # error 401 unless params[:api_key] == 'fake_key_replace_later'
     content_type :json
