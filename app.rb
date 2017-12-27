@@ -53,8 +53,8 @@ class App < Sinatra::Base
     'success!'
   end
 
-  get '/medications/:rxcui' do
-    Medication.find_by_rxcui(params[:rxcui].to_i)&.overview
+  get '/medications/:name' do
+    Medication.find_by_name(params[:name].tr('-', ' '))&.overview
   end
 
   post '/medications/upload' do
