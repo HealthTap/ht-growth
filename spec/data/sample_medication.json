@@ -1,0 +1,371 @@
+{
+    "can_be_prescribed": true,
+    "concept_type": "clinical_drug_component",
+    "drug_classes": ["vitamins"],
+    "drug_interactions": [{
+        "comment": "coenzyme Q10 75 MG (332467) is resolved to coenzyme Q10 (21406)",
+        "interaction_pairs": [{
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00080#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The risk or severity of adverse effects can be increased when Coenzyme Q10 is combined with Daptomycin.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Daptomycin",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 22299
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00252#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Phenytoin.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Phenytoin",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 8183
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00266#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Coenzyme Q10 may decrease the anticoagulant activities of Dicoumarol.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Dicoumarol",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 1598
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00468#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be increased when it is combined with Quinine.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Quinine",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 9071
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00498#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Coenzyme Q10 may decrease the anticoagulant activities of Phenindione.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Phenindione",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 8130
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00559#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The metabolism of Coenzyme Q10 can be increased when combined with Bosentan.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Bosentan",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 75207
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00615#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Rifabutin.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Rifabutin",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 55672
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00627#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The risk or severity of adverse effects can be increased when Niacin is combined with Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Niacin",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 7393
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00682#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Coenzyme Q10 may decrease the anticoagulant activities of Warfarin.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Warfarin",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 11289
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB00946#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Coenzyme Q10 may decrease the anticoagulant activities of Phenprocoumon.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Phenprocoumon",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 8150
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01039#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The risk or severity of adverse effects can be increased when Fenofibrate is combined with Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Fenofibrate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 8703
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01045#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Rifampicin.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Rifampicin",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 9384
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01118#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The metabolism of Coenzyme Q10 can be decreased when combined with Amiodarone.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Amiodarone",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 703
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01201#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Rifapentine.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Rifapentine",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 35617
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01320#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Fosphenytoin.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Fosphenytoin",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 72236
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01323#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The metabolism of Coenzyme Q10 can be increased when combined with St. John&#39;s Wort.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "St. John's Wort",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 1310069
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01323#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The metabolism of Coenzyme Q10 can be increased when combined with St. John&#39;s Wort.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "St. John's Wort",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 258326
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01377#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Magnesium oxide.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Magnesium oxide",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 6582
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01393#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Bezafibrate may increase the myopathic rhabdomyolysis activities of Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Bezafibrate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 1525
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01394#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Colchicine may increase the myopathic rhabdomyolysis activities of Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Colchicine",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 2683
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01406#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be increased when it is combined with Danazol.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Danazol",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 3102
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB01418#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Coenzyme Q10 may decrease the anticoagulant activities of Acenocoumarol.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Acenocoumarol",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 154
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB02701#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The risk or severity of adverse effects can be increased when Nicotinamide is combined with Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Nicotinamide",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 7405
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB02703#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The risk or severity of adverse effects can be increased when Fusidic Acid is combined with Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Fusidic Acid",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 4608
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB02703#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The risk or severity of adverse effects can be increased when Fusidic Acid is combined with Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Fusidic Acid",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 113608
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB04839#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be increased when it is combined with Cyproterone acetate.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Cyproterone acetate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 22054
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB05109#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Coenzyme Q10 may increase the myopathic rhabdomyolysis activities of Trabectedin.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Trabectedin",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 1716278
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB06414#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Etravirine.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Etravirine",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 475969
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB06589#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Coenzyme Q10 may increase the hepatotoxic activities of Pazopanib.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Pazopanib",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 714438
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB06723#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Aluminum hydroxide.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Aluminum hydroxide",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 612
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB06723#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Aluminum hydroxide.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Aluminum hydroxide",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 81948
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB06724#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Calcium carbonate.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Calcium Carbonate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 1897
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB06724#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Calcium carbonate.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Calcium Carbonate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 349908
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB06792#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Lanthanum carbonate can be decreased when it is combined with Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Lanthanum carbonate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 234416
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB06817#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Raltegravir may increase the myopathic rhabdomyolysis activities of Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Raltegravir",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 719872
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB08938#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Magaldrate.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Magaldrate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 29151
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB09055#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Acipimox may increase the myopathic rhabdomyolysis activities of Coenzyme Q10.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Acipimox",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 16817
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB09102#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be increased when it is combined with Daclatasvir.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Daclatasvir",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 1606218
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB09104#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Magnesium hydroxide.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Magnesium Hydroxide",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 6581
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB13136#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "Coenzyme Q10 may decrease the anticoagulant activities of Fluindione.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Fluindione",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 50097
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB09275#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Bismuth Subcitrate.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Bismuth Subcitrate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 47181
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB09281#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Magnesium Trisilicate.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Magnesium Trisilicate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 29170
+        }, {
+            "interacts_with_url": "http://www.drugbank.ca/drugs/DB09481#interactions",
+            "ingredient_rxcui": 21406,
+            "description": "The serum concentration of Coenzyme Q10 can be decreased when it is combined with Magnesium carbonate.",
+            "ingredient_url": "http://www.drugbank.ca/drugs/DB09270#interactions",
+            "interacts_with_name": "Magnesium carbonate",
+            "ingredient_name": "Ubidecarenone",
+            "interacts_with_rxcui": 29155
+        }],
+        "source": "DrugBank"
+    }],
+    "available_generic": true,
+    "branded_available_strengths": [],
+    "rxcui": 332467,
+    "active_compound_group": 21406,
+    "side_effects_fulltext": [],
+    "clinical_drug": [200190],
+    "clinical_drug_component": [332467],
+    "branded_drug_component": [],
+    "clinical_drug_dose_form": [371622],
+    "name": "coenzyme Q10 75 MG",
+    "similar_drugs": [],
+    "branded_drug": [],
+    "free_text": {},
+    "ingredients": [21406],
+    "multiple_ingredients": [],
+    "brand_names": [],
+    "branded_dose_form": []
+}

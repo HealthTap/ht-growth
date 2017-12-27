@@ -1,14 +1,14 @@
 # Interaction between two medications
 # Taken from rxnorm
 class MedicationInteraction < ActiveRecord::Base
-  validates_presence_of :interacts_with_rxcui, :ingredient_rxcui, :severity
+  validates_presence_of :interacts_with_rxcui, :ingredient_rxcui
   validates_uniqueness_of :interacts_with_rxcui,
                           uniqueness: {
                             scope: %i[ingredient_rxcui medication_id]
                           }
   validate :cannot_interact_with_itself
 
-  belongs_to :medication
+  belongs_to :medication_interaction_group
 
   SEVERITY_ORDER = %w[severe normal]
 
@@ -19,8 +19,8 @@ class MedicationInteraction < ActiveRecord::Base
 
   def to_hash
     {
-      'ingredient' => RxcuiLookup.find_by_rxcui(ingredient_rxcui).name,
-      'interacts_with' => RxcuiLookup.find_by_rxcui(interacts_with_rxcui).name,
+      'ingredient' => ingredient_name,
+      'interacts_with' => interacts_with_name,
       'severity' => severity
     }
   end

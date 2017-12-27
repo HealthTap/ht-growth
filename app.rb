@@ -1,4 +1,4 @@
-require 'json'
+require 'json_schema'
 require 'oj'
 require 'sinatra'
 require 'sinatra/activerecord'
@@ -6,6 +6,7 @@ require 'sinatra/cross_origin'
 require 'activerecord-import'
 require 'sinatra/config_file'
 require 'aws-sdk-dynamodb'
+require 'aws-sdk-s3'
 require 'zlib'
 
 Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].sort.each do |path|
@@ -22,6 +23,7 @@ set :port, 80
 set :database_file, './config/database.yml'
 
 # API routes
+# Base uri is /api/guest
 class App < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   register Sinatra::ConfigFile
@@ -31,6 +33,7 @@ class App < Sinatra::Base
       ConsulAgent::HTTP.new(settings.environment,
                             settings.send(settings.environment.to_s))
   set :nosql, settings.send(settings.environment.to_s)[:nosql]
+  set :s3, settings.send(settings.environment.to_s)[:s3]
 
   configure do
     enable :cross_origin
@@ -54,14 +57,16 @@ class App < Sinatra::Base
     Medication.find_by_rxcui(params[:rxcui].to_i)&.overview
   end
 
-  # Format { medication_name: [list of interaction objects] }
-  # Interaction must have a ingredient_rxcui, interacts_with_rxcui and severity
-  # May also have a rank, for display ordering purposes
-  post '/medications/:rxcui/reset-interactions' do
+  post '/medications/upload' do
     data = Oj.load request.body.read
-    interactions_json.each do |rxcui, interactions_data|
-      Medication.find_by_rxcui(rxcui.to_i)&.create_interactions(interactions_data)
+    data = [data] unless data.is_a?(Array)
+    data.each do |medication_data|
+      rxcui = medication_data['rxcui']
+      name = medication_data['name']
+      m = Medication.find_or_create_by(rxcui: rxcui, name: name)
+      m.upload_data(medication_data)
     end
+    { result: true }
   end
 
   options "*" do

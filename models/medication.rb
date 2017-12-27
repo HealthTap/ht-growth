@@ -5,12 +5,18 @@ class Medication < ActiveRecord::Base
   validates_presence_of :name, :rxcui
   validates_uniqueness_of :name, :rxcui
   belongs_to :document
-  has_many :medication_interactions
+  has_many :medication_interaction_groups
+  has_many :medication_interactions, through: :medication_interaction_groups
 
-  # Don't change!
   DOCUMENT_TABLE_NAME = 'medications'
+  S3_FOLDER = 'medications'
 
+  after_initialize :default_name
   after_create :find_or_create_document
+
+  def default_name
+    self.name ||= RxcuiLookup.find_by_rxcui(rxcui)&.name
+  end
 
   def find_or_create_document
     self.document = Document.find_or_create_by(document_key:
@@ -42,38 +48,50 @@ class Medication < ActiveRecord::Base
   end
 
   # Creates interactions from hash
-  def create_interactions(interactions_data)
-    new_interactions = []
-    interactions_data.each do |interaction|
-      ingredient_rxcui = interaction['ingredient_rxcui'].to_i
-      interacts_with_rxcui = interaction['interacts_with_rxcui'].to_i
-      rank = interaction['rank']&.to_i
-      mi = MedicationInteraction.new(interacts_with_rxcui: interacts_with_rxcui,
-                                     ingredient_rxcui: ingredient_rxcui,
-                                     severity: interaction['severity'],
-                                     description: interaction['description'],
-                                     rank: rank,
-                                     medication: self)
-      new_interactions << mi
+  def create_interaction_groups(groups_data)
+    groups_data.each do |group_data|
+      group = MedicationInteractionGroup.from_hash(group_data)
+      medication_interaction_groups << group
     end
-    import_data = MedicationInteraction.import new_interactions
-    medication_interactions << new_interactions
-    first_failed = import_data.failed_instances.slice(0, 4)
-    "#{import_data.num_inserts} inserted, failures: #{first_failed}..."
+  end
+
+  # Each medication may have one image of it
+  # The bucket is shared between dev and production,
+  # and the key format should be standardized as /medication/:rxcui
+  def image_url
+    return unless has_image
+    bucket = App.settings.s3[:bucket]
+    hostname = App.settings.s3[:hostname]
+    "https://#{bucket}.#{hostname}/#{S3_FOLDER}/#{rxcui}"
+  end
+
+  # Right now the only way to set a medication image is via console
+  def upload_image(filename)
+    ImageUploader.write_image("#{S3_FOLDER}/#{rxcui}", filename)
+    update_attribute(:has_image, true)
   end
 
   # API post methods
 
-  # Be careful! We want to overwrite interactions if we get them wrong...
-  def reset_interactions(interactions_data)
-    medication_interactions.destroy_all
-    create_interactions(interactions_data)
+  def upload_data(data)
+    Medication.validate_json(data)
+    reset_interactions(data['drug_interactions'])
+    data.delete('drug_interactions')
+    document.overwrite(data)
+  end
+
+  # We want to overwrite interactions if we get them wrong...
+  # Expects an array of interaction groups
+  def reset_interactions(groups_data)
+    medication_interaction_groups.destroy_all
+    create_interaction_groups(groups_data)
   end
 
   # API get methods
 
   # All relevant content we need for a medication page
   def overview
-    contents.merge('top_interactions' => top_interactions_hash)
+    resp = contents.merge('top_interactions' => top_interactions_hash)
+    resp.merge('user_questions' => Healthtap::Api.search_questions(name))
   end
 end

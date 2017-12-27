@@ -4,6 +4,9 @@ common_settings: &common_settings
     ttl: 180                    # seconds
   nosql:
     table_prefix: guest-development-
+  s3:
+    bucket: 'healthtap-guest'
+    hostname: 's3.amazonaws.com'
 
 development:
   <<: *common_settings

@@ -9,28 +9,19 @@ describe MedicationInteraction do
                                         severity: 'bad')
       expect(mi.errors.count).to be(1)
     end
-  end
-  describe 'upload and read medication interactions' do
-    it 'should not interact with itself' do
-      m = Medication.create name: 'test_medication', rxcui: 0
-      interactions_data = [
-        { 'interacts_with_rxcui' => '1', 'ingredient_rxcui' => '0',
-          'severity' => 'severe' },
-        { 'interacts_with_rxcui' => '2', 'ingredient_rxcui' => '0',
-          'severity' => 'normal' },
-        { 'interacts_with_rxcui' => '3', 'ingredient_rxcui' => '0',
-          'severity' => 'normal', 'rank' => '0' }
-      ]
-      RxcuiLookup.create(rxcui: 0, name: 'test_medication')
-      RxcuiLookup.create(rxcui: 1, name: 'test_medication_1')
-      RxcuiLookup.create(rxcui: 2, name: 'test_medication_2')
-      RxcuiLookup.create(rxcui: 3, name: 'test_medication_3')
-      m.reset_interactions(interactions_data)
-      expect(m.medication_interactions.length).to eq(3)
-      int_hash = m.top_interactions_hash
-      expect(int_hash[0]['interacts_with']).to eq('test_medication_1')
-      expect(int_hash[1]['interacts_with']).to eq('test_medication_3')
-      expect(int_hash[2]['interacts_with']).to eq('test_medication_2')
+    it 'should create from hash' do
+      interaction_json = {
+        'interacts_with_url' => 'http://www.drugbank.ca/interacts_with',
+        'ingredient_rxcui' => 1_000_112,
+        'description' => '2/5',
+        'ingredient_url' => 'http://www.drugbank.ca/ingredient',
+        'interacts_with_name' => 'Lepirudin',
+        'ingredient_name' => 'Medroxyprogesterone acetate',
+        'interacts_with_rxcui' => 237_057
+      }
+      mi = MedicationInteraction.create(interaction_json)
+      expect(mi.ingredient_rxcui).to eq(1_000_112)
+      expect(mi.ingredient_name).to eq('Medroxyprogesterone acetate')
     end
   end
 end
