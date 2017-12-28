@@ -9,6 +9,7 @@ require 'aws-sdk-dynamodb'
 require 'aws-sdk-s3'
 require 'zlib'
 require 'rack/cache'
+require 'redis-rack-cache'
 
 Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].sort.each do |path|
   require path
@@ -23,9 +24,10 @@ set :bind, '0.0.0.0'
 set :port, 80
 set :database_file, './config/database.yml'
 
-use Rack::Cache, metastore: "file:#{File.dirname(__FILE__)}/public/rack/meta",
-                 entitystore: "file:#{File.dirname(__FILE__)}/public/rack/body",
-                 verbose: true
+use Rack::Cache,
+  metastore: 'redis://localhost:6379/0/metastore',
+  entitystore: 'redis://localhost:6380/0/entitystore',
+  verbose: true
 
 # API routes
 # Base uri is /api/guest
