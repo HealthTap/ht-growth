@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227185206) do
+ActiveRecord::Schema.define(version: 20171228184229) do
 
   create_table "document_edits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "edit_type"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20171227185206) do
     t.string "experiment_group"
     t.bigint "document_id"
     t.boolean "has_image"
+    t.datetime "updated_at"
     t.index ["document_id"], name: "index_medications_on_document_id"
   end
 

@@ -53,9 +53,7 @@ class App < Sinatra::Base
   end
 
   after do
-    resp = Oj.dump response.body
-    etag Digest::MD5.hexdigest(resp), kind: :weak
-    body resp
+    body Oj.dump response.body
   end
 
   get '/' do
@@ -63,7 +61,9 @@ class App < Sinatra::Base
   end
 
   get '/medications/:name' do
-    Medication.find_by_name(params[:name].tr('-', ' '))&.overview
+    m = Medication.find_by_name(params[:name].tr('-', ' '))
+    last_modified m.updated_at if m
+    m&.overview
   end
 
   post '/medications/upload' do
