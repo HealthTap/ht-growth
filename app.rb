@@ -54,7 +54,7 @@ class App < Sinatra::Base
 
   after do
     resp = Oj.dump response.body
-    etag Digest::MD5.hexdigest(resp), kind: :strong
+    etag Digest::MD5.hexdigest(resp), kind: :weak
     body resp
   end
 
