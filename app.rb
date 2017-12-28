@@ -25,9 +25,9 @@ set :port, 80
 set :database_file, './config/database.yml'
 
 use Rack::Cache,
-  metastore: 'redis://localhost:6379/0/metastore',
-  entitystore: 'redis://localhost:6380/0/entitystore',
-  verbose: true
+    metastore: 'redis://localhost:6379/0/metastore',
+    entitystore: 'redis://localhost:6380/0/entitystore',
+    verbose: true
 
 # API routes
 # Base uri is /api/guest
@@ -54,10 +54,7 @@ class App < Sinatra::Base
 
   after do
     resp = Oj.dump response.body
-    cache_control :public, max_age: 100
-    # we add the Etag header with a MD5 hash of
-    # the representation
-    etag Digest::MD5.hexdigest(resp)
+    etag Digest::MD5.hexdigest(resp), kind: :strong
     body resp
   end
 
