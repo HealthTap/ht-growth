@@ -8,6 +8,7 @@ require 'sinatra/config_file'
 require 'aws-sdk-dynamodb'
 require 'aws-sdk-s3'
 require 'zlib'
+require 'rack/cache'
 
 Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].sort.each do |path|
   require path
@@ -21,6 +22,10 @@ set :root, File.dirname(__FILE__)
 set :bind, '0.0.0.0'
 set :port, 80
 set :database_file, './config/database.yml'
+
+use Rack::Cache, metastore: 'file:/var/cache/rack/meta',
+                 entitystore: 'file:/var/cache/rack/body',
+                 verbose: true
 
 # API routes
 # Base uri is /api/guest
@@ -46,7 +51,12 @@ class App < Sinatra::Base
   end
 
   after do
-    body Oj.dump response.body
+    resp = Oj.dump response.body
+    cache_control :public, max_age: 100
+    # we add the Etag header with a MD5 hash of
+    # the representation
+    etag Digest::MD5.hexdigest(resp)
+    body resp
   end
 
   get '/' do
