@@ -23,8 +23,8 @@ set :bind, '0.0.0.0'
 set :port, 80
 set :database_file, './config/database.yml'
 
-use Rack::Cache, metastore: 'file:/var/cache/rack/meta',
-                 entitystore: 'file:/var/cache/rack/body',
+use Rack::Cache, metastore: "file:#{File.dirname(__FILE__)}/public/rack/meta",
+                 entitystore: "file:#{File.dirname(__FILE__)}/public/rack/body",
                  verbose: true
 
 # API routes
