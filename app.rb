@@ -63,6 +63,7 @@ class App < Sinatra::Base
   get '/medications/:name' do
     m = Medication.find_by_name(params[:name].tr('-', ' '))
     last_modified m.updated_at if m
+    sleep 2
     m&.overview
   end
 
