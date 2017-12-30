@@ -21,8 +21,7 @@ describe Medication do
   describe 'get data for each content section' do
     it 'should have an overview' do
       m = Medication.create name: 'test_medication', rxcui: 0
-      m.document.overwrite(brand_name: 'prozac')
-      expect(m.overview['brand_name']).to eq 'prozac'
+      m.document.overwrite(brand_names: [0])
     end
   end
   describe 'upload image' do

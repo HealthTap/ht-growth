@@ -68,15 +68,12 @@
         "addiction_drug_schedule" : {"type" : "string"},
         "alcohol_interaction" : {"type" : "string"},
         "available_generic" : {"type" : "boolean"},
-        "available_strengths" : {"type" : "string"},
-        "brand_names" : {
+        "available_strengths" : {
             "type" : "array",
-            "items": { "type": "number"}
+            "items": { "type": "string"}
         },
-        "branded_available_strengths" : {
-            "type" : "array",
-            "items": { "type": "number"}
-        },
+        "brand_names" : { "$ref": "#/definitions/rxcui_array_schema" },
+        "branded_available_strengths" : { "$ref": "#/definitions/rxcui_array_schema" },
         "can_be_prescribed" : {"type" : "boolean"},
         "canonical_name" : {"type" : "string"},
         "concept_type" : {"type" : "string"},
@@ -128,11 +125,11 @@
         "free_text": {
             "type" : "object",
             "properties" : {
-                "description_fulltext" : { "$ref": "#/definitions/free_text_schema" },
-                "dosage_instructions_fulltext" : { "$ref": "#/definitions/free_text_schema" },
-                "overdose_fulltext" : { "$ref": "#/definitions/free_text_schema" },
-                "storage_and_handling_fulltext" : { "$ref": "#/definitions/free_text_schema" },
-                "use_in_specific_populations_fulltext" : { "$ref": "#/definitions/free_text_schema" },
+                "description" : { "$ref": "#/definitions/free_text_schema" },
+                "dosage_instructions" : { "$ref": "#/definitions/free_text_schema" },
+                "overdose" : { "$ref": "#/definitions/free_text_schema" },
+                "storage_and_handling" : { "$ref": "#/definitions/free_text_schema" },
+                "use_in_specific_populations" : { "$ref": "#/definitions/free_text_schema" },
                 "warnings_and_precautions" : { "$ref": "#/definitions/free_text_schema" }
             }
         },

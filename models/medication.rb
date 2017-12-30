@@ -7,6 +7,8 @@ class Medication < ActiveRecord::Base
   belongs_to :document
   has_many :medication_interaction_groups
   has_many :medication_interactions, through: :medication_interaction_groups
+  has_many :related_questions, as: :has_questions
+  has_many :related_searches, as: :has_searches
 
   DOCUMENT_TABLE_NAME = 'medications'
   S3_FOLDER = 'medications'
@@ -33,18 +35,6 @@ class Medication < ActiveRecord::Base
     contents = document.contents
     raise 'Medication content missing' unless contents
     contents
-  end
-
-  # Call should be better optimized
-  def top_interactions_hash
-    top_interactions.map(&:to_hash)
-  end
-
-  # Filters top n interactions based on rules in medication interactions
-  # TODO: Maybe ordering should be done in ruby rather than relying
-  # on special mysql query
-  def top_interactions(n = 5)
-    medication_interactions.order(MedicationInteraction.order_query).limit(n)
   end
 
   # Creates interactions from hash
@@ -91,7 +81,11 @@ class Medication < ActiveRecord::Base
 
   # All relevant content we need for a medication page
   def overview
-    resp = contents.merge('top_interactions' => top_interactions_hash)
-    resp.merge('user_questions' => Healthtap::Api.search_questions(name))
+    resp = all_values
+    resp.merge!('userQuestions' => Healthtap::Api.search_questions(name))
+    resp['relatedQuestions'] = resp['userQuestions'].map do |q|
+      { 'text' => q['question'], 'href' => q['url'] }
+    end
+    resp
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228184229) do
+ActiveRecord::Schema.define(version: 20171229200409) do
 
   create_table "document_edits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "edit_type"
@@ -54,6 +54,24 @@ ActiveRecord::Schema.define(version: 20171228184229) do
     t.boolean "has_image"
     t.datetime "updated_at"
     t.index ["document_id"], name: "index_medications_on_document_id"
+  end
+
+  create_table "related_questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "question_id"
+    t.string "flag"
+    t.integer "rank"
+    t.string "has_questions_type"
+    t.bigint "has_questions_id"
+    t.index ["has_questions_type", "has_questions_id"], name: "index_rq_on_hq_type_and_hq_id"
+  end
+
+  create_table "related_searches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "search_string"
+    t.string "flag"
+    t.integer "rank"
+    t.string "has_searches_type"
+    t.bigint "has_searches_id"
+    t.index ["has_searches_type", "has_searches_id"], name: "index_rs_on_hs_type_and_hs_id"
   end
 
   create_table "rxcui_lookups", primary_key: "rxcui", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

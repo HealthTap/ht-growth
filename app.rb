@@ -8,8 +8,7 @@ require 'sinatra/config_file'
 require 'aws-sdk-dynamodb'
 require 'aws-sdk-s3'
 require 'zlib'
-require 'rack/cache'
-require 'redis-rack-cache'
+require 'redis'
 
 Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].sort.each do |path|
   require path
@@ -23,11 +22,6 @@ set :root, File.dirname(__FILE__)
 set :bind, '0.0.0.0'
 set :port, 80
 set :database_file, './config/database.yml'
-
-use Rack::Cache,
-    metastore: 'redis://localhost:6379/0/metastore',
-    entitystore: 'redis://localhost:6380/0/entitystore',
-    verbose: true
 
 # API routes
 # Base uri is /api/guest
@@ -62,9 +56,12 @@ class App < Sinatra::Base
 
   get '/medications/:name' do
     m = Medication.find_by_name(params[:name].tr('-', ' '))
-    last_modified m.updated_at if m
-    sleep 2
     m&.overview
+  end
+
+  get '/medications/:name/:section' do
+    m = Medication.find_by_name(params[:name].tr('-', ' '))
+    m&.get_section(params[:section])
   end
 
   post '/medications/upload' do

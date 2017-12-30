@@ -1,0 +1,223 @@
+{
+    "type": "object",
+    "required": [
+        "alcoholInteraction",
+        "availableGeneric",
+        "brandNames",
+        "conditionsTreated",
+        "contraindicatedConditions",
+        "drugClasses",
+        "drugForms",
+        "formsWithUsage",
+        "isPrescribable",
+        "name",
+        "genericStrengths",
+        "overdoseWarning",
+        "pregnancyCategory",
+        "seriousDrugInteractions",
+        "synonyms",
+        "topComparisonDrug",
+        "topDrugInteractions",
+        "type"
+    ],
+    "definitions": {
+        "free_text_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "array",
+                        "items": {
+                            "oneOf": [{
+                                "type": "object",
+                                "required": ["text_type", "value"],
+                                "properties": {
+                                    "text_type": {
+                                        "enum": ["ordered_list", "unordered_list"]
+                                    },
+                                    "value": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }, {
+                                "type": "object",
+                                "required": ["text_type", "value"],
+                                "properties": {
+                                    "text_type": {
+                                        "enum": ["paragraph"]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                }
+                            }]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "properties": {
+        "alcoholInteraction": {
+            "type": "string"
+        },
+        "availableGeneric": {
+            "type": "boolean"
+        },
+        "brandNames": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "conditionsTreated": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "contraindicatedConditions": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "drugClasses": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "drugForms": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "drugInteractions": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "formsWithUsage": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["name", "usage"],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "usage": {
+                        "$ref": "#/definitions/free_text_schema"
+                    }
+                }
+            }
+        },
+        "isPrescribable": {
+            "type": "boolean"
+        },
+        "name": {
+            "type": "string"
+        },
+        "genericStrengths": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "overdoseWarning": {
+            "$ref": "#/definitions/free_text_schema"
+        },
+        "pregnancyCategory": {
+            "type": "string"
+        },
+        "seriousDrugInteractions": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "synonyms": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "topComparisonDrug": {
+            "type": "object"
+        },
+        "type": {
+            "type": "string"
+        },
+        "userQuestions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "required": ["id", "question", "url"],
+                    "id": {
+                        "type": "number"
+                    },
+                    "question": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "answers": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "required": ["answer", "createdAt", "thanksCount", "agreesCount"],
+                                "answer": {
+                                    "type": "string"
+                                },
+                                "createdAt": {
+                                    "type": "string"
+                                },
+                                "thanksCount": {
+                                    "type": "number"
+                                },
+                                "agreesCount": {
+                                    "type": "number"
+                                },
+                                "author": {
+                                    "required": ["name", "photo", "url"],
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "photo": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "specialty": {
+                                        "type": "string"
+                                    },
+                                    "practiceDuration": {
+                                        "type": "number"
+                                    },
+                                    "medicalSchool": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
