@@ -2,6 +2,10 @@
 class Medication < ActiveRecord::Base
 
   def all_values
+    data = contents.merge({
+      'normal_interactions' => normal_interactions,
+      'severe_interactions' => severe_interactions
+    })
     fields = %w[alcoholInteraction
                 availableGeneric
                 brandNames
@@ -23,7 +27,7 @@ class Medication < ActiveRecord::Base
                 topComparisonDrug
                 type
                 warning]
-    api_values(fields, contents)
+    api_values(fields, data)
   end
 
   def api_values(values, data)
@@ -53,18 +57,16 @@ class Medication < ActiveRecord::Base
     when 'drugForms'
       drug_forms(data).map { |i| rxcui_lookups[i.to_i] }
     when 'drugInteractions'
-      normal_interactions.map do |interaction|
-        rxcui_lookups[interaction.interacts_with_rxcui.to_i]
+      data['normal_interactions'].map do |interaction|
+        rxcui_lookups[interaction['interacts_with_rxcui'].to_i]
       end || []
     when 'formsWithUsage'
-      drug_forms(data).map do |i|
-        m = Medication.find_by_rxcui(i)
-        next unless m
+      Medication.where(rxcui: drug_forms(data)).map do |m|
         {
           'name' => m.name,
           'usage' => m.contents.dig('free_text', 'dosage_instructions')
         }
-      end.compact
+      end
     when 'isPrescribable'
       data['can_be_prescribed']
     when 'name'
@@ -78,7 +80,7 @@ class Medication < ActiveRecord::Base
     when 'pregnancyCategoryDescription'
       Description.pregnancy(data['pregnancy_category'])
     when 'severeDrugInteractions'
-      severe_interactions.map do |interaction|
+      data['severe_interactions'].map do |interaction|
         rxcui_lookups[interaction.interacts_with_rxcui.to_i]
       end || []
     when 'synonyms'
@@ -100,12 +102,14 @@ class Medication < ActiveRecord::Base
   end
 
   def severe_interactions
-    medication_interactions.where(severity: 'severe')
+    medication_interactions.where(severity: 'severe').map(&:as_json)
   end
 
   # Filters top n non-severe interactions
   def normal_interactions(n = 5)
-    medication_interactions.where("severity is null or severity != 'severe'").order(MedicationInteraction.order_query).limit(n)
+    medication_interactions.where("severity is null or severity != 'severe'")
+                           .order(MedicationInteraction.order_query)
+                           .limit(n).map(&:as_json)
   end
 
   # Preload the lookup table for rxcui mappings
@@ -122,10 +126,7 @@ class Medication < ActiveRecord::Base
         h.each_value { |v| gather_rxcui.call(v) }
       end
     }
-    interactions = (normal_interactions + severe_interactions).to_a.map do |i|
-      i.as_json
-    end
-    gather_rxcui.call(data.merge({'drug_interactions' => interactions}))
+    gather_rxcui.call(data)
     lookup_table = {}
     lookups = RxcuiLookup.where(rxcui: rxcuis).select(:rxcui, :name)
     lookups.each { |l| lookup_table[l.rxcui] = l.name }
