@@ -5,6 +5,7 @@ class Medication < ActiveRecord::Base
     fields = %w[alcoholInteraction
                 availableGeneric
                 brandNames
+                clinicalDrugForms
                 conditionsTreated
                 contraindicatedConditions
                 drugClasses
@@ -16,10 +17,12 @@ class Medication < ActiveRecord::Base
                 genericStrengths
                 overdoseWarning
                 pregnancyCategory
+                pregnancyCategoryDescription
                 severeDrugInteractions
                 synonyms
                 topComparisonDrug
-                type]
+                type
+                warning]
     api_values(fields, contents)
   end
 
@@ -39,6 +42,8 @@ class Medication < ActiveRecord::Base
       data['available_generic']
     when 'brandNames'
       data['brand_names']&.map { |i| rxcui_lookups[i.to_i] } || []
+    when 'clinicalDrugForms'
+      data['clinical_drug_dose_form']&.map { |i| rxcui_lookups[i.to_i] } || []
     when 'conditionsTreated'
       data.dig('ndfrt_conditions', 'additionalProperties') || []
     when 'contraindicatedConditions'
@@ -46,9 +51,11 @@ class Medication < ActiveRecord::Base
     when 'drugClasses'
       data['drug_classes'] || []
     when 'drugForms'
-      drug_forms(data)&.map { |i| rxcui_lookups[i.to_i] }
+      drug_forms(data).map { |i| rxcui_lookups[i.to_i] }
     when 'drugInteractions'
-      normal_interactions.map(&:interacts_with_name) || []
+      normal_interactions.map do |interaction|
+        rxcui_lookups[interaction.interacts_with_rxcui]
+      end || []
     when 'formsWithUsage'
       drug_forms(data).map do |i|
         m = Medication.find_by_rxcui(i)
@@ -68,14 +75,20 @@ class Medication < ActiveRecord::Base
       data.dig('free_text', 'overdose')
     when 'pregnancyCategory'
       data['pregnancy_category']
+    when 'pregnancyCategoryDescription'
+      Description.pregnancy(data['pregnancy_category'])
     when 'severeDrugInteractions'
-      severe_interactions.map(&:interacts_with_name) || []
+      severe_interactions.map do |interaction|
+        rxcui_lookups[interaction.interacts_with_rxcui]
+      end || []
     when 'synonyms'
       data['similar_drugs'] || []
     when 'topComparisonDrug' # TODO: top comparison drug
       nil
     when 'type'
       data['concept_type']&.tr('_', ' ')
+    when 'warning'
+      data.dig('free_text', 'warnings_and_precautions')
     end
   end
 

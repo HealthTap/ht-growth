@@ -11,17 +11,29 @@ describe MedicationInteraction do
     end
     it 'should create from hash' do
       interaction_json = {
-        'interacts_with_url' => 'http://www.drugbank.ca/interacts_with',
         'ingredient_rxcui' => 1_000_112,
         'description' => '2/5',
-        'ingredient_url' => 'http://www.drugbank.ca/ingredient',
-        'interacts_with_name' => 'Lepirudin',
-        'ingredient_name' => 'Medroxyprogesterone acetate',
         'interacts_with_rxcui' => 237_057
       }
       mi = MedicationInteraction.create(interaction_json)
       expect(mi.ingredient_rxcui).to eq(1_000_112)
-      expect(mi.ingredient_name).to eq('Medroxyprogesterone acetate')
+    end
+    it 'should reset interactions on medication' do
+      m = Medication.create name: 'test_medication', rxcui: 0
+      pairs = [
+        {
+          'ingredient_rxcui' => 1_000_112,
+          'description' => '2/5',
+          'interacts_with_rxcui' => 237_057
+        },
+        {
+          'ingredient_rxcui' => 1_000_111,
+          'description' => 'Dr. Pelle says to not take these together',
+          'interacts_with_rxcui' => 237_052
+        }
+      ]
+      m.reset_interactions(pairs)
+      expect(m.medication_interactions.length).to eq(2)
     end
   end
 end

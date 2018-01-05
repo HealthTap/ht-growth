@@ -141,6 +141,9 @@
         "pregnancyCategory": {
             "type": "string"
         },
+        "pregnancyCategoryDescription": {
+            "type": "string"
+        },
         "seriousDrugInteractions": {
             "type": "array",
             "items": {

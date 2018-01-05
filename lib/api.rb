@@ -5,6 +5,36 @@ module Healthtap
     API_BASE = 'https://www.healthtap.com/api/v2'.freeze
     SEARCH_API_BASE = 'https://search-staging.healthtap.com/api/v003'.freeze
 
+    def self.num_lives_saved
+      k = 'num-lives-saved'
+      lives_saved = Cache.read_static(k)
+      return lives_saved if lives_saved
+      uri = URI("#{API_BASE}/lives_saved_answers_served.json?key=#{API_KEY}")
+      lives_saved = Oj.load(Net::HTTP.get(uri))['num_lives_saved']
+      Cache.write_static(k, lives_saved)
+      lives_saved
+    end
+
+    def self.num_answers_served
+      k = 'num-answers-served'
+      answers_served = Cache.read_static(k)
+      return answers_served if answers_served
+      uri = URI("#{API_BASE}/lives_saved_answers_served.json?key=#{API_KEY}")
+      answers_served = Oj.load(Net::HTTP.get(uri))['num_answers_served']
+      Cache.write_static(k, answers_served)
+      answers_served
+    end
+
+    def self.num_doctors
+      k = 'num-doctors'
+      doctors = Cache.read_static(k)
+      return doctors if doctors
+      uri = URI("#{API_BASE}/registered_doctors.json?key=#{API_KEY}")
+      doctors = Oj.load(Net::HTTP.get(uri))['num_docs']
+      Cache.write_static(k, doctors)
+      doctors
+    end
+
     def self.questions(ids)
       response = []
       id_params = ''

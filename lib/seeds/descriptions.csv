@@ -1,0 +1,13 @@
+category,name,value
+Pregnancy Category,A,Adequate and well-controlled studies have failed to demonstrate a risk to the fetus in the first trimester of pregnancy (and there is no evidence of risk in later trimesters).
+Pregnancy Category,B,Animal reproduction studies have failed to demonstrate a risk to the fetus and there are no adequate and well-controlled studies in pregnant women.
+Pregnancy Category,C,Animal reproduction studies have shown an adverse effect on the fetus and there are no adequate and well-controlled studies in humans, but potential benefits may warrant use of the drug in pregnant women despite potential risks.
+Pregnancy Category,D,There is positive evidence of human fetal risk based on adverse reaction data from investigational or marketing experience or studies in humans, but potential benefits may warrant use of the drug in pregnant women despite potential risks.
+Pregnancy Category,X,Studies in animals or humans have demonstrated fetal abnormalities and/or there is positive evidence of human fetal risk based on adverse reaction data from investigational or marketing experience, and the risks involved in use of the drug in pregnant women clearly outweigh potential benefits.
+Controlled Substance Schedule,I,Substances in this schedule have no currently accepted medical use in the United States, a lack of accepted safety for use under medical supervision, and a high potential for abuse.
+Controlled Substance Schedule,II,Substances in this schedule have a high potential for abuse which may lead to severe psychological or physical dependence.
+Controlled Substance Schedule,IIN,Substances in this schedule have a high potential for abuse which may lead to severe psychological or physical dependence.
+Controlled Substance Schedule,III,Substances in this schedule have a potential for abuse less than substances in Schedules I or II and abuse may lead to moderate or low physical dependence or high psychological dependence.
+Controlled Substance Schedule,IIIN,Substances in this schedule have a potential for abuse less than substances in Schedules I or II and abuse may lead to moderate or low physical dependence or high psychological dependence.
+Controlled Substance Schedule,IV,Substances in this schedule have a low potential for abuse relative to substances in Schedule III.
+Controlled Substance Schedule,V,Substances in this schedule have a low potential for abuse relative to substances listed in Schedule IV and consist primarily of preparations containing limited quantities of certain narcotics.

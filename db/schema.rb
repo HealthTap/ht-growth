@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229200409) do
+ActiveRecord::Schema.define(version: 20180104232023) do
+
+  create_table "descriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "category"
+    t.text "value"
+  end
 
   create_table "document_edits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "edit_type"
@@ -24,25 +30,14 @@ ActiveRecord::Schema.define(version: 20171229200409) do
     t.string "table_name"
   end
 
-  create_table "medication_interaction_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "source"
-    t.text "comment"
-    t.bigint "medication_id"
-    t.index ["medication_id"], name: "index_medication_interaction_groups_on_medication_id"
-  end
-
   create_table "medication_interactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "interacts_with_rxcui"
     t.integer "ingredient_rxcui"
     t.integer "rank"
     t.string "severity"
     t.text "description"
-    t.text "ingredient_name"
-    t.string "ingredient_url"
-    t.text "interacts_with_name"
-    t.string "interacts_with_url"
-    t.bigint "medication_interaction_group_id"
-    t.index ["medication_interaction_group_id"], name: "index_medication_interactions_on_medication_interaction_group_id"
+    t.bigint "medication_id"
+    t.index ["medication_id"], name: "index_medication_interactions_on_medication_id"
   end
 
   create_table "medications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

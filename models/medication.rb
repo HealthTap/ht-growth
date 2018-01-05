@@ -5,13 +5,12 @@ class Medication < ActiveRecord::Base
   validates_presence_of :name, :rxcui
   validates_uniqueness_of :name, :rxcui
   belongs_to :document
-  has_many :medication_interaction_groups
-  has_many :medication_interactions, through: :medication_interaction_groups
+  has_many :medication_interactions
   has_many :related_questions, as: :has_questions
   has_many :related_searches, as: :has_searches
 
-  DOCUMENT_TABLE_NAME = 'medications'
-  S3_FOLDER = 'medications'
+  DOCUMENT_TABLE_NAME = 'medications'.freeze
+  S3_FOLDER = 'medications'.freeze
 
   after_initialize :default_name
   after_create :find_or_create_document
@@ -38,11 +37,13 @@ class Medication < ActiveRecord::Base
   end
 
   # Creates interactions from hash
-  def create_interaction_groups(groups_data)
-    groups_data.each do |group_data|
-      group = MedicationInteractionGroup.from_hash(group_data)
-      medication_interaction_groups << group
+  def create_interactions(interaction_pairs)
+    interactions = interaction_pairs.map do |pair|
+      pair['medication_id'] = id
+      MedicationInteraction.new(pair)
     end
+    MedicationInteraction.import interactions
+    medication_interactions << interactions
   end
 
   # Each medication may have one image of it
@@ -72,9 +73,9 @@ class Medication < ActiveRecord::Base
 
   # We want to overwrite interactions if we get them wrong...
   # Expects an array of interaction groups
-  def reset_interactions(groups_data)
-    medication_interaction_groups.destroy_all
-    create_interaction_groups(groups_data)
+  def reset_interactions(interaction_pairs)
+    medication_interactions.destroy_all
+    create_interactions(interaction_pairs)
   end
 
   # API get methods

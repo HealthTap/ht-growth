@@ -8,7 +8,7 @@ class MedicationInteraction < ActiveRecord::Base
                           }
   validate :cannot_interact_with_itself
 
-  belongs_to :medication_interaction_group
+  belongs_to :medication
 
   def cannot_interact_with_itself
     return if interacts_with_rxcui != ingredient_rxcui

@@ -64,6 +64,14 @@ class App < Sinatra::Base
     m&.get_section(params[:section])
   end
 
+  get '/static-values' do
+    {
+      'numLivesSaved' => Healthtap::Api.num_lives_saved,
+      'numAnswersServed' => Healthtap::Api.num_answers_served,
+      'numDoctors' => Healthtap::Api.num_doctors
+    }
+  end
+
   post '/medications/upload' do
     data = Oj.load request.body.read
     data = [data] unless data.is_a?(Array)

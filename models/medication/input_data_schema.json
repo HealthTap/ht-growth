@@ -137,26 +137,11 @@
             "type" : "array",
             "items" : {
                 "type" : "object",
-                "required" : ["interaction_pairs"],
                 "properties" : {
-                    "source" : { "type" : "string" },
-                    "comment" : { "type" : "string" },
-                    "interaction_pairs" : {
-                        "type" : "array",
-                        "items" : {
-                            "type" : "object",
-                            "properties" : {
-                                "severity" : { "type" : "string" },
-                                "description" : { "type" : "string" },
-                                "ingredient_rxcui" : { "type" : "number" },
-                                "ingredient_name" : { "type" : "string" },
-                                "ingredient_url" : { "type" : "string" },
-                                "interacts_with_rxcui" : { "type" : "number" },
-                                "interacts_with_name" : { "type" : "string" },
-                                "interacts_with_url" : { "type" : "string" }
-                            }
-                        }
-                    }
+                    "severity" : { "type" : "string" },
+                    "description" : { "type" : "string" },
+                    "ingredient_rxcui" : { "type" : "number" },
+                    "interacts_with_rxcui" : { "type" : "number" }
                 }
             }
         }
