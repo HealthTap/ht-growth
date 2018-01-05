@@ -7,7 +7,7 @@ require 'activerecord-import'
 seeds_directory = "#{App.settings.root}/lib/seeds"
 
 # Create Tribenzor
-Medication.create(name: 'Acetaminophen', rxcui: 1000001)
+Medication.create(name: 'Acetaminophen', rxcui: 1_000_001)
 
 # Populate Tribenzor with some content
 puts 'Seeding Acetaminophen data'

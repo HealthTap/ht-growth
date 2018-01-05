@@ -54,7 +54,7 @@ class Medication < ActiveRecord::Base
       drug_forms(data).map { |i| rxcui_lookups[i.to_i] }
     when 'drugInteractions'
       normal_interactions.map do |interaction|
-        rxcui_lookups[interaction.interacts_with_rxcui]
+        rxcui_lookups[interaction.interacts_with_rxcui.to_i]
       end || []
     when 'formsWithUsage'
       drug_forms(data).map do |i|
@@ -79,7 +79,7 @@ class Medication < ActiveRecord::Base
       Description.pregnancy(data['pregnancy_category'])
     when 'severeDrugInteractions'
       severe_interactions.map do |interaction|
-        rxcui_lookups[interaction.interacts_with_rxcui]
+        rxcui_lookups[interaction.interacts_with_rxcui.to_i]
       end || []
     when 'synonyms'
       data['similar_drugs'] || []
@@ -94,7 +94,9 @@ class Medication < ActiveRecord::Base
 
   # Helpers for get_value ^^
   def drug_forms(data)
-    (data['branded_dose_form'] || []) + (data['clinical_drug_dose_form'] || [])
+    forms = (data['branded_dose_form'] || []) +
+            (data['clinical_drug_dose_form'] || [])
+    forms.slice(0, 5)
   end
 
   def severe_interactions
@@ -120,7 +122,10 @@ class Medication < ActiveRecord::Base
         h.each_value { |v| gather_rxcui.call(v) }
       end
     }
-    gather_rxcui.call(data)
+    interactions = (normal_interactions + severe_interactions).to_a.map do |i|
+      i.as_json
+    end
+    gather_rxcui.call(data.merge({'drug_interactions' => interactions}))
     lookup_table = {}
     lookups = RxcuiLookup.where(rxcui: rxcuis).select(:rxcui, :name)
     lookups.each { |l| lookup_table[l.rxcui] = l.name }
