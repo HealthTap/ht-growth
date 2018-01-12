@@ -1,0 +1,1889 @@
+{
+    "alcohol_interaction": "Interactions can occur",
+    "canonical_name": "acetaminophen",
+    "active_compound_group": 161,
+    "ingredients": [161],
+    "available_strengths": ["80 MG"],
+    "free_text": {
+        "dosage_instructions": [{
+            "title": "Directions",
+            "text": [{
+                "text_type": "unordered_list",
+                "value": ["take 2 gelcaps at bedtime", "do not take more than 2 gelcaps of this product in 24 hours"]
+            }]
+        }],
+        "storage_and_handling": [{
+            "title": "Other information",
+            "text": [{
+                "text_type": "unordered_list",
+                "value": ["store at 25\u00baC (77\u00baF); excursions permitted between 15\u00ba-30\u00baC (59\u00ba-86\u00baF)", "avoid high humidity", "see end flap for expiration date and lot number"]
+            }]
+        }]
+    },
+    "rxcui": 161,
+    "clinical_drug_dose_form": [370745, 370506, 370509, 370508, 369097, 370511, 1536879, 1803956, 370744, 370510, 370512],
+    "similar_drugs": [{
+        "name": "ibuprofen",
+        "canonical_brand": "midol",
+        "rxcui": 5640
+    }, {
+        "name": "diclofenac",
+        "canonical_brand": "voltaren",
+        "rxcui": 3355
+    }, {
+        "name": "naloxone",
+        "canonical_brand": "narcan",
+        "rxcui": 7242
+    }, {
+        "name": "tramadol",
+        "canonical_brand": "ryzolt",
+        "rxcui": 10689
+    }, {
+        "name": "fentanyl",
+        "canonical_brand": "duragesic",
+        "rxcui": 4337
+    }],
+    "available_generic": true,
+    "multiple_ingredients": [],
+    "name": "Acetaminophen",
+    "pregnancy_category": "C",
+    "brand_names": [1041527, 1926804, 217115, 1299851, 707319, 1013857, 1235457, 1046372, 215367, 218205, 94268, 1650122, 220905, 202432, 220205, 1540829, 1020105, 1040033, 1429902, 1193449, 215257, 405038, 798923, 1020129, 1358830, 202433, 220207, 225064, 1437468, 1661684, 220562, 214994, 1293937, 1038776, 1876799, 1101342, 1100002],
+    "concept_type": "ingredients",
+    "ndfrt_conditions": {
+        "Acetaminophen": ["Pain", "Fever"]
+    },
+    "branded_available_strengths": [692667, 1299853, 364869, 1095639, 364168, 1650124, 367547, 369094, 369079, 369068, 1539542, 1095480, 707321, 828554, 386243, 1358832, 369639, 1540831, 1437470, 406010, 364182, 366322, 1301881, 1101344, 608651, 369102, 1429904, 1803958, 646458, 603723, 1661686, 1429894, 1435175, 798925, 369096, 1020131, 369070, 1661103, 369642, 1193451, 364772, 1235459, 367572, 1876801, 1100004, 615915, 369085, 1738138, 1926806, 1038778, 1046374, 1293939],
+    "clinical_drug_component": [315257, 329161, 330600, 393515, 315251, 315260, 315250],
+    "branded_dose_form": [692667, 1299853, 364869, 1095639, 364168, 1650124, 367547, 369094, 369079, 369068, 1539542, 1095480, 707321, 828554, 386243, 1358832, 369639, 1540831, 1437470, 406010, 364182, 366322, 1301881, 1101344, 608651, 369102, 1429904, 1803958, 646458, 603723, 1661686, 1429894, 1435175, 798925, 369096, 1020131, 369070, 1661103, 369642, 1193451, 364772, 1235459, 367572, 1876801, 1100004, 615915, 369085, 1738138, 1926806, 1038778, 1046374, 1293939],
+    "branded_drug_component": [570042, 1926805, 1235458, 569998, 569964, 570072, 646457, 1661685, 570010, 570008, 798927, 1650123, 569963, 569975, 1095625, 1095479, 1299852, 570445, 1540830, 1876800, 1041528, 569995, 1101343, 1095638, 576226, 569979, 1048904, 570448, 570104, 1038777, 615914, 570125, 1298829, 569974, 608663, 570054, 1095635, 828553, 1661102, 798924, 1358831, 1293938, 565623, 1020106, 707326, 569986, 569972, 570044, 1429903, 570028, 1358836, 570070, 1193450, 1437469, 570127, 1020130, 1539541, 1046373, 608680, 1100003, 569971, 707320, 1040037, 570116, 570110],
+    "drug_classes": ["analgesics", "anti-inflammatory agents", "antipyretics"],
+    "clinical_drug": [152620, 199079, 250651, 198437, 432477, 247974, 198444, 247650, 251698, 106811, 1148399, 243675, 307667, 198445, 282464, 250650, 603136, 198440, 313820, 198434, 307696, 250649, 307676, 238160, 198439, 477282, 238159, 313782, 307695, 104906, 204900, 198436, 251374, 307666, 1536880, 247661, 307668, 388081, 307675, 249875, 483017, 307684, 392293, 198443, 226882, 1661683],
+    "addiction_drug_schedule": "II",
+    "drug_interactions": [{
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Peginterferon alfa-2b.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 253453
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Gramicidin D.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 5011
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Cyclosporine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3008
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Cholecalciferol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2418
+    }, {
+        "description": "The serum concentration of Pravastatin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 42463
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Fluvoxamine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 42355
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Valsartan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 69749
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Nicotine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7407
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Nicotine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 31765
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Bortezomib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 358258
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Betaxolol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1520
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Fluconazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4450
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Erythromycin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4053
+    }, {
+        "description": "The serum concentration of Caffeine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1886
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Sildenafil.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 136411
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Pyrimethamine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9010
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Reserpine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9260
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Azithromycin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 18631
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Ticlopidine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10594
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Pantoprazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 40790
+    }, {
+        "description": "The serum concentration of Citalopram can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2556
+    }, {
+        "description": "The serum concentration of Eletriptan can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 231049
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Nelfinavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 134527
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Indinavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1546024
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Indinavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 114289
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Lovastatin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6472
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Reboxetine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 60842
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Nevirapine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 53654
+    }, {
+        "description": "The serum concentration of Ranolazine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 35829
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Ziprasidone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 115698
+    }, {
+        "description": "The risk or severity of adverse effects can be increased when Dapsone is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3108
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Phenytoin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8183
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Doxycycline.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3640
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Doxycycline.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1545992
+    }, {
+        "description": "The serum concentration of Diethylstilbestrol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3390
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Clotrimazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2623
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Sulfisoxazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10207
+    }, {
+        "description": "The serum concentration of Metoprolol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6918
+    }, {
+        "description": "Acetaminophen may increase the anticoagulant activities of Dicoumarol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1598
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Ropinirole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 72302
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Isradipine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 33910
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Amsacrine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 739
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Theophylline.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 91178
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Theophylline.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10438
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Liothyronine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10814
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Lidocaine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6387
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Clemastine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2578
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Venlafaxine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 39786
+    }, {
+        "description": "The serum concentration of Conjugated Equine Estrogens can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4099
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Atomoxetine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 38400
+    }, {
+        "description": "The serum concentration of Morphine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7052
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Tenofovir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 300195
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Mitomycin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 632
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Bexarotene.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 233272
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Pentobarbital.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8004
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Valproic Acid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 11118
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Valproic Acid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 40254
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Idelalisib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1544460
+    }, {
+        "description": "The serum concentration of Pazopanib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 714438
+    }, {
+        "description": "The serum concentration of Silodosin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 720825
+    }, {
+        "description": "The serum concentration of Topotecan can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 57308
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Fusidic Acid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4608
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Fusidic Acid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 113608
+    }, {
+        "description": "The serum concentration of Vincristine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 11202
+    }, {
+        "description": "The serum concentration of Bosutinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1307619
+    }, {
+        "description": "The serum concentration of Bosutinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1314319
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Conivaptan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 302285
+    }, {
+        "description": "The serum concentration of Edoxaban can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1599538
+    }, {
+        "description": "The serum concentration of Doxorubicin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3639
+    }, {
+        "description": "The serum concentration of Doxorubicin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 142433
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Dabrafenib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1424911
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Mifepristone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6964
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Mitotane.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7004
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Abiraterone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1100072
+    }, {
+        "description": "The serum concentration of Aripiprazole can be decreased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 89013
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Rifabutin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 55672
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Rifampicin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9384
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Rifapentine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 35617
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Amiodarone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 703
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Ritonavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 85762
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Voriconazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 121243
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Telithromycin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 274786
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Ketoconazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6135
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Atazanavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 343047
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Nefazodone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 31565
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Itraconazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 28031
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Clarithromycin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 21212
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Saquinavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 83395
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Saquinavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 859857
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Posaconazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 282446
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Lopinavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 195088
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Telaprevir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1102261
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Boceprevir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1102129
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Mexiletine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6926
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Fluoxetine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4493
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Thioridazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10502
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Delavirdine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 83816
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Paroxetine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 32937
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Terbinafine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 37801
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Cocaine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2653
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Quinidine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9068
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Tipranavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 190548
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Cinacalcet.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 407990
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Bupropion.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 42347
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Methotrimeprazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6852
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Enzalutamide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1307298
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Floxuridine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4488
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Sulfadiazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10171
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Fluorouracil.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4492
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Nicardipine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7396
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Capecitabine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 194000
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Tolbutamide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10635
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Gemfibrozil.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4719
+    }, {
+        "description": "The serum concentration of Everolimus can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 141704
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Clopidogrel.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 32968
+    }, {
+        "description": "Cholestyramine can cause a decrease in the absorption of Acetaminophen resulting in a reduced serum concentration and potentially a decrease in efficacy.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2447
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Panobinostat.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1603350
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with St. John&#39;s Wort.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1310069
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with St. John&#39;s Wort.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 258326
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Disulfiram.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3554
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Vemurafenib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1147220
+    }, {
+        "description": "The serum concentration of Afatinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1430438
+    }, {
+        "description": "Acetaminophen may increase the hepatotoxic activities of Dasatinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 475342
+    }, {
+        "description": "Acetaminophen may increase the hepatotoxic activities of Dasatinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1546019
+    }, {
+        "description": "The serum concentration of Colchicine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2683
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Probenecid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8698
+    }, {
+        "description": "Acetaminophen may increase the hepatotoxic activities of Sorafenib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 495881
+    }, {
+        "description": "The serum concentration of the active metabolites of Dabigatran etexilate can be increased when Dabigatran etexilate is used in combination with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1546356
+    }, {
+        "description": "The serum concentration of the active metabolites of Dabigatran etexilate can be increased when Dabigatran etexilate is used in combination with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1037042
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Deferasirox.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 614373
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Lumacaftor.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1655922
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Fosaprepitant.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1731071
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Ivacaftor.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1243041
+    }, {
+        "description": "The serum concentration of Ledipasvir can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1591922
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Luliconazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1482680
+    }, {
+        "description": "The serum concentration of Naloxegol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1551777
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Netupitant.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1552337
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Palbociclib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1601374
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Secobarbital.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9624
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Methohexital.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6847
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Thiopental.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 282416
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Thiopental.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10493
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Primidone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8691
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Methylphenobarbital.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6758
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Thiamylal.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10464
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Phenobarbital.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8134
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Amobarbital.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 719
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Hexobarbital.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 5302
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Barbital.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1325
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Barbexaclone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 46795
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Ceritinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1535457
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Siltuximab.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1535218
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Tocilizumab.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 612865
+    }, {
+        "description": "Acetaminophen may increase the anticoagulant activities of Phenindione.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8130
+    }, {
+        "description": "Acetaminophen may increase the anticoagulant activities of Warfarin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 11289
+    }, {
+        "description": "Acetaminophen may increase the anticoagulant activities of Phenprocoumon.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8150
+    }, {
+        "description": "Acetaminophen may increase the anticoagulant activities of Acenocoumarol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 154
+    }, {
+        "description": "Acetaminophen may increase the anticoagulant activities of Fluindione.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 50097
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Osimertinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1721560
+    }, {
+        "description": "The risk or severity of adverse effects can be increased when Nitric Oxide is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7442
+    }, {
+        "description": "The risk or severity of adverse effects can be increased when Acetaminophen is combined with Prilocaine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8686
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Nafcillin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7233
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Efavirenz.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 195085
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Modafinil.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 30125
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Dexamethasone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3264
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Etravirine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 475969
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Eslicarbazepine acetate.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1482501
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Bosentan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 75207
+    }, {
+        "description": "The risk or severity of adverse effects can be increased when Acetaminophen is combined with Sodium Nitrite.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9894
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Dihydroergotamine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3418
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Diltiazem.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3443
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Olaparib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1597582
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Isavuconazonium.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1608322
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Verapamil.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 11170
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Fosamprenavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 358262
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Dronedarone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 233698
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Nilotinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 662281
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Crizotinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1148495
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Amprenavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 228656
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Nifedipine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7417
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Trazodone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10737
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Digoxin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3407
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Levothyroxine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10582
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Trimethoprim.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10829
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Progesterone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8727
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Cimetidine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2541
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Aldosterone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1312358
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Tacrolimus.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 235991
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Tacrolimus.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 42316
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Sirolimus.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 35302
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Midazolam.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6960
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Vinblastine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 11198
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Cholic Acid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1440856
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Tamoxifen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10324
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Streptozocin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10114
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Mitoxantrone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7005
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Daunorubicin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3109
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Estrone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4103
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Norethisterone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7514
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Estriol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4094
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Fosphenytoin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 72236
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Mibefradil.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 83213
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Cholesterol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2438
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Mefloquine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6694
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Amlodipine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 17767
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Testosterone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10379
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Azelastine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 18603
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Ranitidine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9143
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Etoposide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4179
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Methadone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6813
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Simvastatin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 36567
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Atorvastatin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 83367
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Vinorelbine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 39541
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Paclitaxel.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 56946
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Prazosin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8629
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Nitrendipine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7441
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Neostigmine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7315
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Mebendazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6672
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Dipyridamole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3521
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Chlorpromazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2403
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Chloroquine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2393
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Dactinomycin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3100
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Trifluoperazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10800
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Terfenadine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 42330
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Quinine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9071
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Indomethacin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 5781
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Fluphenazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4496
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Felodipine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4316
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Clofazimine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2592
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Carvedilol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 20352
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Spironolactone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9997
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Diclofenac.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3355
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Dextromethorphan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3289
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Cyclophosphamide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1545988
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Cyclophosphamide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3002
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Ciprofloxacin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2551
+    }, {
+        "description": "The serum concentration of Lansoprazole can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 17128
+    }, {
+        "description": "The serum concentration of Losartan can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 52175
+    }, {
+        "description": "The serum concentration of Atenolol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1202
+    }, {
+        "description": "The serum concentration of Bromocriptine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1760
+    }, {
+        "description": "The serum concentration of Loperamide can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6468
+    }, {
+        "description": "The serum concentration of Imipramine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 5691
+    }, {
+        "description": "The serum concentration of Haloperidol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 5093
+    }, {
+        "description": "The serum concentration of Amitriptyline can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 704
+    }, {
+        "description": "The serum concentration of Ivermectin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6069
+    }, {
+        "description": "The serum concentration of Hydrocortisone can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 5492
+    }, {
+        "description": "The serum concentration of Levofloxacin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 82122
+    }, {
+        "description": "The serum concentration of Fexofenadine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 87636
+    }, {
+        "description": "The serum concentration of Propranolol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8787
+    }, {
+        "description": "The serum concentration of Prednisone can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8640
+    }, {
+        "description": "The serum concentration of Gefitinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 328134
+    }, {
+        "description": "The serum concentration of Grepafloxacin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 83719
+    }, {
+        "description": "The serum concentration of Diazepam can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3322
+    }, {
+        "description": "The serum concentration of Digitoxin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3403
+    }, {
+        "description": "The serum concentration of Sparfloxacin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 18469
+    }, {
+        "description": "The serum concentration of Methylprednisolone can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6902
+    }, {
+        "description": "The serum concentration of Risperidone can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 35636
+    }, {
+        "description": "The serum concentration of Quetiapine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 51272
+    }, {
+        "description": "The serum concentration of Quetiapine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 221153
+    }, {
+        "description": "The serum concentration of Olanzapine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 61381
+    }, {
+        "description": "The serum concentration of Clozapine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2626
+    }, {
+        "description": "The serum concentration of Naloxone can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7242
+    }, {
+        "description": "The serum concentration of Cisplatin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2555
+    }, {
+        "description": "The serum concentration of Prednisolone can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8638
+    }, {
+        "description": "The serum concentration of Acebutolol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 149
+    }, {
+        "description": "The serum concentration of Ibuprofen can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 5640
+    }, {
+        "description": "The serum concentration of Salicylic acid can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9525
+    }, {
+        "description": "The serum concentration of Acetylsalicylic acid can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 91101
+    }, {
+        "description": "The serum concentration of Acetylsalicylic acid can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1191
+    }, {
+        "description": "The serum concentration of Clonidine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2599
+    }, {
+        "description": "The serum concentration of Domperidone can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3626
+    }, {
+        "description": "The serum concentration of Mannitol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6628
+    }, {
+        "description": "The serum concentration of Betamethasone can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1514
+    }, {
+        "description": "The serum concentration of Toremifene can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 38409
+    }, {
+        "description": "The serum concentration of Clomifene can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2596
+    }, {
+        "description": "The serum concentration of Estradiol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4083
+    }, {
+        "description": "The serum concentration of Docetaxel can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 72962
+    }, {
+        "description": "The serum concentration of Docetaxel can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1299922
+    }, {
+        "description": "The serum concentration of Methotrexate can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6851
+    }, {
+        "description": "The serum concentration of Timolol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1546004
+    }, {
+        "description": "The serum concentration of Timolol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10600
+    }, {
+        "description": "The serum concentration of Nadolol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7226
+    }, {
+        "description": "The serum concentration of Alitretinoin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 81864
+    }, {
+        "description": "The serum concentration of Vecuronium can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 71535
+    }, {
+        "description": "The serum concentration of Debrisoquin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3118
+    }, {
+        "description": "The serum concentration of Gemcitabine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 12574
+    }, {
+        "description": "The serum concentration of Epinastine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 39684
+    }, {
+        "description": "The serum concentration of Cerivastatin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 596723
+    }, {
+        "description": "The serum concentration of Levetiracetam can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 114477
+    }, {
+        "description": "The serum concentration of Nizatidine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 42319
+    }, {
+        "description": "The serum concentration of Erlotinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 337525
+    }, {
+        "description": "The serum concentration of Lamotrigine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 28439
+    }, {
+        "description": "The serum concentration of Sitagliptin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 593411
+    }, {
+        "description": "The serum concentration of Sitagliptin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 621590
+    }, {
+        "description": "The serum concentration of Arsenic trioxide can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 18330
+    }, {
+        "description": "The serum concentration of Cabazitaxel can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 996051
+    }, {
+        "description": "The serum concentration of Temsirolimus can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 657797
+    }, {
+        "description": "The serum concentration of Ketazolam can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 28181
+    }, {
+        "description": "The serum concentration of Ethinyl Estradiol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4124
+    }, {
+        "description": "The serum concentration of Romidepsin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 877510
+    }, {
+        "description": "The serum concentration of Rivaroxaban can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1114195
+    }, {
+        "description": "The serum concentration of Ezetimibe can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 341248
+    }, {
+        "description": "The serum concentration of Fesoterodine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 797195
+    }, {
+        "description": "The serum concentration of Tolvaptan can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 358257
+    }, {
+        "description": "The serum concentration of Pitavastatin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 861634
+    }, {
+        "description": "The serum concentration of Ulipristal can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1005921
+    }, {
+        "description": "The serum concentration of Fidaxomicin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1111103
+    }, {
+        "description": "The serum concentration of Indacaterol can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1114326
+    }, {
+        "description": "The serum concentration of Clobazam can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 21241
+    }, {
+        "description": "The serum concentration of Linagliptin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1100699
+    }, {
+        "description": "The serum concentration of Ticagrelor can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1116632
+    }, {
+        "description": "The serum concentration of Apixaban can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1364430
+    }, {
+        "description": "The serum concentration of Axitinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1242999
+    }, {
+        "description": "The serum concentration of Vismodegib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1242987
+    }, {
+        "description": "The serum concentration of Carfilzomib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1302966
+    }, {
+        "description": "The serum concentration of Mirabegron can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1300786
+    }, {
+        "description": "The serum concentration of Ponatinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1364347
+    }, {
+        "description": "The serum concentration of Fluticasone furoate can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 705022
+    }, {
+        "description": "The serum concentration of Canagliflozin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1546031
+    }, {
+        "description": "The serum concentration of Canagliflozin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1373458
+    }, {
+        "description": "The serum concentration of Pomalidomide can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1369713
+    }, {
+        "description": "The serum concentration of Lenalidomide can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 342369
+    }, {
+        "description": "The serum concentration of Trastuzumab emtansine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1371041
+    }, {
+        "description": "The serum concentration of Zidovudine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 11413
+    }, {
+        "description": "The serum concentration of Irinotecan can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 51499
+    }, {
+        "description": "The serum concentration of Irinotecan can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 153329
+    }, {
+        "description": "The serum concentration of Lamivudine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 68244
+    }, {
+        "description": "The serum concentration of Mycophenolate mofetil can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 68149
+    }, {
+        "description": "The serum concentration of Levomilnacipran can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1433212
+    }, {
+        "description": "The serum concentration of Sofosbuvir can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1484911
+    }, {
+        "description": "The serum concentration of Dapagliflozin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1488564
+    }, {
+        "description": "The serum concentration of Umeclidinium can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1487514
+    }, {
+        "description": "The serum concentration of Lenvatinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1603296
+    }, {
+        "description": "The serum concentration of Lenvatinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1604346
+    }, {
+        "description": "The serum concentration of Cobimetinib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1722365
+    }, {
+        "description": "The serum concentration of Selexipag can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1729002
+    }, {
+        "description": "The serum concentration of Ambrisentan can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 358274
+    }, {
+        "description": "The serum concentration of Ombitasvir can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1597371
+    }, {
+        "description": "The serum concentration of Grazoprevir can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1871173
+    }, {
+        "description": "The serum concentration of Grazoprevir can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1734630
+    }, {
+        "description": "The serum concentration of Technetium Tc-99m sestamibi can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1482913
+    }, {
+        "description": "The serum concentration of Venetoclax can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1747556
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Omeprazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7646
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Perindopril.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 54552
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Lisinopril.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 29046
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Lisinopril.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1546022
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Enalapril.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3827
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Doxazosin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 49276
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Cilazapril.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 21102
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Captopril.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1998
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Candesartan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 214354
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Candesartan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 135481
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Albendazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 430
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Miconazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6932
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Ergotamine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4025
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Ergonovine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4021
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Fentanyl.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4337
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Alfentanil.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 480
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Nisoldipine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7435
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Tacrine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10318
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Sumatriptan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 67158
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Sumatriptan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 37418
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Selegiline.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9639
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Scopolamine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9601
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Scopolamine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9603
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Nitrazepam.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7440
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Naltrexone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7243
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Meprobamate.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6760
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Maprotiline.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6646
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Ketamine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6130
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Flurazepam.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4501
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Doxepin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3638
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Desipramine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3247
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Clomipramine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2597
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Chlorprothixene.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2406
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Buspirone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1827
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Biperiden.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1589
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Amantadine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 620
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Pimozide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8331
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Astemizole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 42328
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Triflupromazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10805
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Protriptyline.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8886
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Promethazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8745
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Chlorpropamide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2404
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Bepridil.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1436
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Loratadine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 28889
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Desloratadine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 275635
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Sertraline.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 36437
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Estramustine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4089
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Flupentixol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4495
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Megestrol acetate.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 29451
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Quinacrine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9061
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Genistein.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 25696
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Quercetin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 9060
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Aminohippuric acid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 7832
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Aminohippuric acid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 42837
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Naringenin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1368173
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Glyburide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 4815
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Sulfinpyrazone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10205
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Palmitic Acid.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1426390
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Trimipramine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10834
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Benzocaine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1399
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Caspofungin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 140108
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Sunitinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 357977
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Terazosin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 37798
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Dronabinol.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10402
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Buprenorphine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1819
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Telmisartan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 73494
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Lapatinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 480167
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Propafenone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8754
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Rilpivirine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1102270
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Lomitapide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1364479
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Regorafenib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1312397
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Rolapitant.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1665496
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Daclatasvir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1606218
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Alectinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1727455
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Elbasvir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1734628
+    }, {
+        "description": "The serum concentration of Saxagliptin can be decreased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 857974
+    }, {
+        "description": "The serum concentration of Saxagliptin can be decreased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1546030
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Simeprevir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1482790
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Promazine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8742
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Duloxetine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 72625
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Celecoxib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 140587
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Darifenacin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 136198
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Tranylcypromine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10734
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Diphenhydramine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 3498
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Lorcaserin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1300701
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Artemether.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 18343
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Lumefantrine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 847728
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Eliglustat.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1547220
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Cyproterone acetate.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 22054
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Zafirlukast.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 114970
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Sulfamethoxazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 10180
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Irbesartan.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 83818
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Fluvastatin.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 41127
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Leflunomide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 27169
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Cobicistat.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1306284
+    }, {
+        "description": "The serum concentration of Nintedanib can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1592737
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Darunavir.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 460132
+    }, {
+        "description": "Ethanol may increase the hepatotoxic activities of Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 448
+    }, {
+        "description": "The serum concentration of Rifaximin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 35619
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Rosiglitazone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 84108
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Rabeprazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 183877
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Rabeprazole.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 114979
+    }, {
+        "description": "The metabolism of Acetaminophen can be decreased when combined with Pioglitazone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 33738
+    }, {
+        "description": "The serum concentration of Phenylephrine can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 8163
+    }, {
+        "description": "The serum concentration of Acetaminophen can be decreased when it is combined with Teriflunomide.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1310520
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Aprepitant.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 358255
+    }, {
+        "description": "The serum concentration of Brentuximab vedotin can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1147320
+    }, {
+        "description": "The serum concentration of Busulfan can be increased when it is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1828
+    }, {
+        "description": "The metabolism of Acetaminophen can be increased when combined with Carbamazepine.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 2002
+    }, {
+        "description": "Acetaminophen may increase the hepatotoxic activities of Imatinib.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 282388
+    }, {
+        "description": "The risk or severity of adverse effects can be increased when Isoniazid is combined with Acetaminophen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6038
+    }, {
+        "description": "The serum concentration of Acetaminophen can be increased when it is combined with Metyrapone.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 6923
+    }, {
+        "description": "Acetaminophen may increase the hepatotoxic activities of Mipomersen.",
+        "ingredient_rxcui": 161,
+        "interacts_with_rxcui": 1367839
+    }],
+    "can_be_prescribed": true,
+    "side_effects_fulltext": [],
+    "contraindicated_conditions": {
+        "Acetaminophen": ["Glucosephosphate Dehydrogenase Deficiency", "Drug Hypersensitivity"]
+    },
+    "branded_drug": [1095481, 1095640, 828555, 707327, 608653, 1048963, 1243439, 1100005, 798926, 209353, 1738139, 209360, 1435176, 1038779, 608652, 1358837, 1101345, 209459, 404162, 209890, 209361, 209433, 209368, 209387, 1046375, 209495, 209417, 1650127, 1429895, 1298830, 209531, 209501, 1020132, 1293942, 209870, 1429907, 1926810, 209461, 1235462, 209352, 1539544, 209364, 707322, 798928, 1661106, 1299856, 731370, 1041530, 1540834, 603724, 209443, 1437473, 1661689, 209431, 1876804, 828557, 404161, 209375, 209384, 1301882, 209399, 1358835, 209397, 1095626, 200977, 209363, 1095636, 1193454, 1243440, 209873]
+}

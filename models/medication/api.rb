@@ -2,10 +2,10 @@
 class Medication < ActiveRecord::Base
 
   def all_values
-    data = contents.merge({
+    data = contents.merge(
       'normal_interactions' => normal_interactions,
       'severe_interactions' => severe_interactions
-    })
+    )
     fields = %w[alcoholInteraction
                 availableGeneric
                 brandNames
@@ -15,11 +15,15 @@ class Medication < ActiveRecord::Base
                 drugClasses
                 drugForms
                 drugInteractions
+                drugSchedule
+                drugScheduleDescription
                 formsWithUsage
                 isPrescribable
                 name
+                generic
                 genericStrengths
                 overdoseWarning
+                photo
                 pregnancyCategory
                 pregnancyCategoryDescription
                 severeDrugInteractions
@@ -27,7 +31,22 @@ class Medication < ActiveRecord::Base
                 topComparisonDrug
                 type
                 warning]
-    api_values(fields, data)
+    api_vaues = api_values(fields, data)
+  end
+
+  # Data for comparison section between two drugs
+  def comparison_values
+    fields = %w[alcoholInteraction
+                brandNames
+                conditionsTreated
+                drugForms
+                drugSchedule
+                name
+                pregnancyCategory]
+    api_values(fields, contents)
+  end
+
+  def compare_interactions(a,b)
   end
 
   def api_values(values, data)
@@ -37,7 +56,7 @@ class Medication < ActiveRecord::Base
     resp
   end
 
-  # Mapping from data to api value
+  # Mapping from dynamo document to api value
   def api_value(val, data, rxcui_lookups)
     case val
     when 'alcoholInteraction'
@@ -49,9 +68,9 @@ class Medication < ActiveRecord::Base
     when 'clinicalDrugForms'
       data['clinical_drug_dose_form']&.map { |i| rxcui_lookups[i.to_i] } || []
     when 'conditionsTreated'
-      data.dig('ndfrt_conditions', 'additionalProperties') || []
+      data['ndfrt_conditions']&.values&.reduce(:+)&.map(&:downcase) || []
     when 'contraindicatedConditions'
-      data.dig('contraindicated_conditions', 'additionalProperties') || []
+      data['contraindicated_conditions']&.values&.reduce(:+)&.map(&:downcase) || []
     when 'drugClasses'
       data['drug_classes'] || []
     when 'drugForms'
@@ -60,6 +79,10 @@ class Medication < ActiveRecord::Base
       data['normal_interactions'].map do |interaction|
         rxcui_lookups[interaction['interacts_with_rxcui'].to_i]
       end || []
+    when 'drugSchedule'
+      data['addiction_drug_schedule']
+    when 'drugScheduleDescription'
+      Description.substance_schedule(data['addiction_drug_schedule'])
     when 'formsWithUsage'
       Medication.where(rxcui: drug_forms(data)).map do |m|
         {
@@ -71,10 +94,14 @@ class Medication < ActiveRecord::Base
       data['can_be_prescribed']
     when 'name'
       data['name']
+    when 'generic'
+      rxcui_lookups[data['active_compound_group'].to_i]
     when 'genericStrengths'
       data['available_strengths'] || []
     when 'overdoseWarning'
       data.dig('free_text', 'overdose')
+    when 'photo'
+      image_url
     when 'pregnancyCategory'
       data['pregnancy_category']
     when 'pregnancyCategoryDescription'
@@ -84,11 +111,16 @@ class Medication < ActiveRecord::Base
         rxcui_lookups[interaction.interacts_with_rxcui.to_i]
       end || []
     when 'synonyms'
-      data['similar_drugs'] || []
+      canonical_name = data['canonical_name']&.downcase
+      canonical_name == name.downcase ? [] : [data['canonical_name']]
     when 'topComparisonDrug' # TODO: top comparison drug
-      nil
+      top_comp = Medication.find_by_rxcui(data['similar_drugs']&.slice(0).dig('rxcui').to_i)
+      comp_data = top_comp&.comparison_values || {}
+      comp_data['interaction comparison'] = compare_interactions(self, top_comp)
+      comp_data
     when 'type'
-      data['concept_type']&.tr('_', ' ')
+      # data['concept_type']&.tr('_', ' ')
+      data['active_compound_group'].to_i == rxcui ? 'generic drug' : 'brand'
     when 'warning'
       data.dig('free_text', 'warnings_and_precautions')
     end

@@ -9,7 +9,7 @@ class Document < ActiveRecord::Base
   has_many :document_edits
 
   def contents
-    Healthtap::NoSql.get_item(table_name, document_key: document_key)
+    Healthtap::NoSql.item(table_name, document_key: document_key)
   end
 
   # Dynamo rejects the following values: nil, '', []
@@ -42,11 +42,12 @@ class Document < ActiveRecord::Base
 
   # Create and try to execute an edit in dynamo db
   def create_and_execute_edit(edit_type, attribute_path, value = nil)
+    sanitize_for_dynamo(value)
     edit = DocumentEdit.new(edit_type: edit_type,
                             attribute_path: attribute_path,
                             value: value, document: self)
     message = edit.execute_change
-    edit.save unless message != 0
+    edit.save
     message
   end
 

@@ -9,6 +9,7 @@ require 'aws-sdk-dynamodb'
 require 'aws-sdk-s3'
 require 'zlib'
 require 'redis'
+require 'friendly_id'
 
 Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].sort.each do |path|
   require path
@@ -62,6 +63,14 @@ class App < Sinatra::Base
   get '/medications/:name/:section' do
     m = Medication.find_by_name(params[:name].tr('-', ' '))
     m&.get_section(params[:section])
+  end
+
+  get '/health/drug-classes' do
+    HtmlSitemap.find_by_name('drug-classes')&.sitemap
+  end
+
+  get '/health/drug-classes/*' do |path|
+    HtmlSitemap.find_by_name('drug-classes')&.sitemap(path)
   end
 
   get '/static-values' do

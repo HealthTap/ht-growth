@@ -49,16 +49,20 @@ describe Document do
       d = Document.create document_key: 0, table_name: 'medications'
       new_json = {
         'brand_name' => 'nozac',
-        'dose_forms' => [
-          { 'form' => 'tablet', 'dosage' => '50ml' },
-          { 'form' => 'tablet', 'dosage' => '20ml' },
-          { 'form' => 'cream', 'dosage' => '20ml' }
-        ]
+        'dosage' => {
+          'clinical' => {
+            'dose_forms' => [
+              { 'form' => 'tablet', 'dosage' => '50ml' },
+              { 'form' => 'tablet', 'dosage' => '20ml' },
+              { 'form' => 'cream', 'dosage' => '20ml' }
+            ]
+          }
+        }
       }
       d.overwrite(new_json)
       new_dose_form = { 'form' => 'syrup', 'dosage' => '20ml' }
-      d.add_to_array('dose_forms', new_dose_form)
-      expect(d.contents['dose_forms'][-1]['form']).to eq('syrup')
+      d.add_to_array('dosage.clinical.dose_forms', new_dose_form)
+      expect(d.contents['dosage']['clinical']['dose_forms'][-1]['form']).to eq('syrup')
     end
     it 'should delete from an array' do
       d = Document.create document_key: 0, table_name: 'medications'
@@ -102,14 +106,6 @@ describe Document do
       expect(d.contents['brand_name']).to eq('prozac')
       first_interaction = d.contents['interactions'][1]
       expect(first_interaction).to eq('alcohol' => "don't drink, kids")
-    end
-  end
-  describe 'error scenarios' do
-    it 'malformed expression' do
-      d = Document.create document_key: 0, table_name: 'medications'
-      d.overwrite(brand_name: 'advil')
-      message = d.update_content('brand_name[dose_forms]', 1)
-      expect(message).to eq('Change failed')
     end
   end
 end

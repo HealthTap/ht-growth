@@ -46,7 +46,7 @@ module Healthtap
           id_params += "&ids[]=#{id}"
         end
       end
-      if id_params
+      unless id_params.empty?
         uri = URI("#{API_BASE}/user_questions/guest?key=#{API_KEY}#{id_params}")
         res = Oj.load(Net::HTTP.get(uri))
         new_questions = res['result'] ? res['objects'] : []

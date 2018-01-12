@@ -2,18 +2,47 @@
 # Should have a document with static content
 # Also includes meta data around medication i.e. seo rules, experiments, etc
 class Medication < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, :use => :slugged
+
   validates_presence_of :name, :rxcui
   validates_uniqueness_of :name, :rxcui
-  belongs_to :document
+  validates :name, length: { maximum: 200 }
+  # TODO: decide on max name length (we really don't need to be storing
+  # super long medication names if we never display them anywhere)
+  # TODO: rules for trimming for displaying as url or title...
+
+  after_create :find_or_create_document
+  belongs_to :document, foreign_key: :rxcui
+
   has_many :medication_interactions
   has_many :related_questions, as: :has_questions
   has_many :related_searches, as: :has_searches
 
   DOCUMENT_TABLE_NAME = 'medications'.freeze
   S3_FOLDER = 'medications'.freeze
+  HTML_PATH = '/health/medications'.freeze
+
+  # SEO flag should be used to encode behavior for SEO that the
+  # medication generates
+  # Some examples are which sitemap the medication page belongs to,
+  # whether it should appear on an html sitemap, xml sitemap,
+  # whether to noindex the page, etc.
+  HTML_SITEMAP_FLAGS = %w[good].freeze
 
   after_initialize :default_name
-  after_create :find_or_create_document
+
+  def in_html_sitemap?
+    HTML_SITEMAP_FLAGS.include?(seo_flag)
+  end
+
+  def pathname
+    "#{HTML_PATH}/#{to_param}"
+  end
+
+  def to_s
+    name
+  end
 
   def default_name
     self.name ||= RxcuiLookup.find_by_rxcui(rxcui)&.name

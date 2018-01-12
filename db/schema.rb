@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104232023) do
+ActiveRecord::Schema.define(version: 20180112015726) do
+
+  create_table "concept_trees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "num_items"
+    t.text "item_mapping"
+  end
 
   create_table "descriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -30,6 +36,13 @@ ActiveRecord::Schema.define(version: 20180104232023) do
     t.string "table_name"
   end
 
+  create_table "html_sitemaps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "model"
+    t.bigint "concept_tree_id"
+    t.index ["concept_tree_id"], name: "index_html_sitemaps_on_concept_tree_id"
+  end
+
   create_table "medication_interactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "interacts_with_rxcui"
     t.integer "ingredient_rxcui"
@@ -40,15 +53,14 @@ ActiveRecord::Schema.define(version: 20180104232023) do
     t.index ["medication_id"], name: "index_medication_interactions_on_medication_id"
   end
 
-  create_table "medications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "rxcui"
+  create_table "medications", primary_key: "rxcui", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "seo_flag"
     t.string "experiment_group"
-    t.bigint "document_id"
     t.boolean "has_image"
     t.datetime "updated_at"
-    t.index ["document_id"], name: "index_medications_on_document_id"
+    t.string "slug"
+    t.index ["slug"], name: "index_medications_on_slug", unique: true
   end
 
   create_table "related_questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

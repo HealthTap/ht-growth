@@ -1,7 +1,6 @@
 class CreateMedications < ActiveRecord::Migration[5.1]
   def change
-    create_table :medications do |t|
-      t.integer :rxcui
+    create_table :medications, primary_key: :rxcui do |t|
       t.string :name
       t.string :seo_flag
       t.string :experiment_group

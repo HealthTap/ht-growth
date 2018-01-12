@@ -24,7 +24,7 @@ module Healthtap
       connection.put_item(table_name: prefix_table(table_name), item: item)
     end
 
-    def self.get_item(table_name, key, params = {})
+    def self.item(table_name, key, params = {})
       params[:table_name] = prefix_table(table_name)
       params[:key] = key
       connection.get_item(params)&.item
@@ -34,6 +34,37 @@ module Healthtap
       params[:table_name] = prefix_table(table_name)
       params[:key] = key
       connection.update_item(params)
+    end
+
+    def self.attribute_value(table_name, key, attribute_path)
+      alias_mapping, projection_expression = attribute_alias(attribute_path)
+      params = {
+        expression_attribute_names: alias_mapping,
+        projection_expression: projection_expression
+      }
+      val = item(table_name, key, params)
+      val = val.dig(*attribute_path.split('.')) if val.is_a?(Hash)
+      val
+    end
+
+    # Returns alias name mapping and combined expression for dynamodb request
+    # Necessary to process dynamo requests as there are certain reserved words
+    # we cannot use
+    # TODO: This probably could be done better...
+    def self.attribute_alias(attribute_path)
+      alias_mapping = {}
+      alias_str = ''
+      attribute_path.split('.').each do |attribute|
+        index = ''
+        if attribute.include?('[')
+          attr_split = attribute.split('[')
+          attribute = attr_split[0]
+          index = '[' + attr_split[1]
+        end
+        alias_mapping["##{attribute}"] = attribute
+        alias_str += "##{attribute}#{index}."
+      end
+      [alias_mapping, alias_str[0..-2]]
     end
 
     def self.provisioned_throughput(table_name)
