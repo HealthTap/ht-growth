@@ -42,7 +42,7 @@ class ConceptTree < ActiveRecord::Base
   end
 
   def path(path_arr = [])
-    return Healthtap::NoSql.item() if path_arr.empty?
+    return item_mapping if path_arr.empty?
     expression = path_arr.join('.')
     i = item_mapping[path_arr.first]
     Healthtap::NoSql.attribute_value(TABLE_NAME,
