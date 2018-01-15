@@ -21,8 +21,7 @@ describe HtmlSitemap do
       expected_links =
         [
           { 'url' => '/health/drug-classes/analgesics/popular',
-            'display_name' => 'popular'
-          }
+            'display_name' => 'popular' }
         ]
       expect(sitemap.sitemap(%w[analgesics])).to eq(expected_links)
     end

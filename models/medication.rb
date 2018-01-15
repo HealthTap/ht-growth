@@ -3,7 +3,7 @@
 # Also includes meta data around medication i.e. seo rules, experiments, etc
 class Medication < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, :use => :slugged
+  friendly_id :name, use: :slugged
 
   validates_presence_of :name, :rxcui
   validates_uniqueness_of :name, :rxcui
@@ -112,7 +112,9 @@ class Medication < ActiveRecord::Base
   # All relevant content we need for a medication page
   def overview
     resp = all_values
-    resp.merge!('userQuestions' => Healthtap::Api.search_questions(name))
+    resp['userQuestions'] = Healthtap::Api.search_questions(name)
+    resp['breadcrumbs'] = HtmlSitemap.find_by_name('drug-classes')
+                                       &.breadcrumbs([resp['drugClasses'][0]])
     resp['relatedQuestions'] = resp['userQuestions'].map do |q|
       { 'text' => q['question'], 'href' => q['url'] }
     end

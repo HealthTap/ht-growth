@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112015726) do
+ActiveRecord::Schema.define(version: 20180115190911) do
 
   create_table "concept_trees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20180112015726) do
 
   create_table "rxcui_lookups", primary_key: "rxcui", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "name"
+    t.integer "rank"
   end
 
 end

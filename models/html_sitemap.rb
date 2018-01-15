@@ -48,7 +48,23 @@ class HtmlSitemap < ActiveRecord::Base
   # Returns URI of sitemap link
   def pathname(path, link)
     path_string = path&.length&.positive? ? '/' + path.join('/') : ''
-    path_string = path_string.tr('-', ' ')
+    path_string = path_string.tr(' ', '-')
     "/#{SITEMAP_SUBDIRECTORY}/#{name}#{path_string}/#{link}"
+  end
+
+  def breadcrumbs(path)
+    url = "/#{SITEMAP_SUBDIRECTORY}/#{name}"
+    crumbs = [{
+      'displayName' => name.tr('-', ' '),
+      'url' => url
+    }]
+    path.each do |directory|
+      url += "/#{directory.tr(' ', '-')}"
+      crumbs.push(
+        'displayName' => directory,
+        'url' => url
+      )
+    end
+    crumbs
   end
 end

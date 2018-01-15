@@ -48,7 +48,11 @@ class App < Sinatra::Base
   end
 
   after do
-    body Oj.dump response.body
+    if response.body.is_a?(Hash)
+      body Oj.dump response.body.merge('success' => true)
+    else
+      body Oj.dump('success' => false)
+    end
   end
 
   get '/' do
@@ -65,19 +69,20 @@ class App < Sinatra::Base
     m&.get_section(params[:section])
   end
 
-  get '/health/drug-classes' do
-    HtmlSitemap.find_by_name('drug-classes')&.sitemap
+  get '/drug-classes' do
+    { 'siteLinks' => HtmlSitemap.find_by_name('drug-classes')&.sitemap }
   end
 
-  get '/health/drug-classes/*' do |path|
-    HtmlSitemap.find_by_name('drug-classes')&.sitemap(path.split('/'))
+  get '/drug-classes/*' do |path|
+    { 'siteLinks' => HtmlSitemap.find_by_name('drug-classes')&.sitemap(path.split('/')) }
   end
 
   get '/static-values' do
     {
       'numLivesSaved' => Healthtap::Api.num_lives_saved,
       'numAnswersServed' => Healthtap::Api.num_answers_served,
-      'numDoctors' => Healthtap::Api.num_doctors
+      'numDoctors' => Healthtap::Api.num_doctors,
+      'success' => true
     }
   end
 
@@ -90,7 +95,7 @@ class App < Sinatra::Base
       m = Medication.find_or_create_by(rxcui: rxcui, name: name)
       m.upload_data(medication_data)
     end
-    { result: true }
+    { 'success' => true }
   end
 
   options "*" do

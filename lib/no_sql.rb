@@ -24,6 +24,10 @@ module Healthtap
       connection.put_item(table_name: prefix_table(table_name), item: item)
     end
 
+    def self.delete_item(table_name, key)
+      connection.delete_item(table_name: prefix_table(table_name), key: key)
+    end
+
     def self.item(table_name, key, params = {})
       params[:table_name] = prefix_table(table_name)
       params[:key] = key
@@ -54,15 +58,15 @@ module Healthtap
     def self.attribute_alias(attribute_path)
       alias_mapping = {}
       alias_str = ''
-      attribute_path.split('.').each do |attribute|
+      attribute_path.split('.').each_with_index do |attribute, i|
         index = ''
         if attribute.include?('[')
           attr_split = attribute.split('[')
           attribute = attr_split[0]
           index = '[' + attr_split[1]
         end
-        alias_mapping["##{attribute}"] = attribute
-        alias_str += "##{attribute}#{index}."
+        alias_mapping["##{i}"] = attribute
+        alias_str += "##{i}#{index}."
       end
       [alias_mapping, alias_str[0..-2]]
     end

@@ -15,9 +15,4 @@ class MedicationInteraction < ActiveRecord::Base
     errors.add(:interacts_with_rxcui, "can't be the same as ingredient_rxcui")
   end
 
-  # If we have too many interactions, we need a way to prioritize them,
-  # For now, use custom field rank
-  def self.order_query
-    '-rank DESC'
-  end
 end

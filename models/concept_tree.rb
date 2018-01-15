@@ -26,10 +26,17 @@ class ConceptTree < ActiveRecord::Base
     ret
   end
 
+  def clear_items(range)
+    range.each do |i|
+      item = { Name: "#{name}-#{i}" }
+      Healthtap::NoSql.delete_item(TABLE_NAME, item)
+    end
+  end
+
   def overwrite_tree(tree)
     # Amateur way of making sure items are below 400kb
     num_groups = Oj.dump(tree).length / 50_000 + 1
-    sliced_hash = tree.to_a.in_groups_of(num_groups, false)
+    sliced_hash = tree.to_a.in_groups_of(tree.keys.count / num_groups, false)
     new_mapping = {}
     sliced_hash.each_with_index do |part, i|
       part = part.to_h
@@ -37,8 +44,10 @@ class ConceptTree < ActiveRecord::Base
       item = part.merge(Name: "#{name}-#{i}")
       Healthtap::NoSql.put_item(TABLE_NAME, item)
     end
+    old_num_items = num_items
     update_attribute(:item_mapping, new_mapping)
     update_attribute(:num_items, sliced_hash.count)
+    clear_items(num_items..old_num_items - 1) if old_num_items > num_items
   end
 
   def path(path_arr = [])

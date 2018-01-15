@@ -64,7 +64,7 @@ class Medication < ActiveRecord::Base
     when 'availableGeneric'
       data['available_generic']
     when 'brandNames'
-      data['brand_names']&.map { |i| rxcui_lookups[i.to_i] } || []
+      RxcuiLookup.top_concepts(data['brand_names'], 5) || []
     when 'clinicalDrugForms'
       data['clinical_drug_dose_form']&.map { |i| rxcui_lookups[i.to_i] } || []
     when 'conditionsTreated'
@@ -76,9 +76,7 @@ class Medication < ActiveRecord::Base
     when 'drugForms'
       drug_forms(data).map { |i| rxcui_lookups[i.to_i] }
     when 'drugInteractions'
-      data['normal_interactions'].map do |interaction|
-        rxcui_lookups[interaction['interacts_with_rxcui'].to_i]
-      end || []
+      data['normal_interactions'] || []
     when 'drugSchedule'
       data['addiction_drug_schedule']
     when 'drugScheduleDescription'
@@ -134,14 +132,21 @@ class Medication < ActiveRecord::Base
   end
 
   def severe_interactions
-    medication_interactions.where(severity: 'severe').map(&:as_json)
+    medication_interactions.where(severity: 'severe')
+                           .pluck(:interacts_with_rxcui)
   end
 
   # Filters top n non-severe interactions
   def normal_interactions(n = 5)
     medication_interactions.where("severity is null or severity != 'severe'")
-                           .order(MedicationInteraction.order_query)
-                           .limit(n).map(&:as_json)
+                           .joins('inner join rxcui_lookups
+                                   on rxcui_lookups.rxcui =
+                                   medication_interactions.
+                                   interacts_with_rxcui')
+                           .order('-medication_interactions.rank desc,
+                                   -rxcui_lookups.rank desc')
+                           .limit(n)
+                           .pluck(:name)
   end
 
   # Preload the lookup table for rxcui mappings
