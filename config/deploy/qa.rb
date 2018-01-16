@@ -64,7 +64,7 @@ set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/qa.rb"
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 set :unicorn_roles, %w{web}
 set :unicorn_rack_env, 'development'
-set :branch, 'qa'
+set :branch, 'master'
 
 # Unicorn control tasks
 namespace :deploy do

@@ -1,5 +1,5 @@
 # define paths and filenames
-deploy_to = '/home/growth/guest-ws.healthtap.com'
+deploy_to = '/home/growth/guest-api-ws.healthtap.com'
 app_root = "#{deploy_to}/current"
 pid_file = "#{app_root}/tmp/pids/unicorn.pid"
 socket_file= "#{deploy_to}/shared/unicorn.sock"
