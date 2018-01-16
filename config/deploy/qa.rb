@@ -63,7 +63,7 @@ set :linked_dirs, %w{log tmp/pids}
 set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/qa.rb"
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 set :unicorn_roles, %w{web}
-set :unicorn_rack_env, 'qa'
+set :unicorn_rack_env, 'development'
 set :branch, 'qa'
 
 # Unicorn control tasks

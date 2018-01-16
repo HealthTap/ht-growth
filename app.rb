@@ -86,18 +86,6 @@ class App < Sinatra::Base
     }
   end
 
-  post '/medications/upload' do
-    data = Oj.load request.body.read
-    data = [data] unless data.is_a?(Array)
-    data.each do |medication_data|
-      rxcui = medication_data['rxcui']
-      name = medication_data['name']
-      m = Medication.find_or_create_by(rxcui: rxcui, name: name)
-      m.upload_data(medication_data)
-    end
-    { 'success' => true }
-  end
-
   options "*" do
     response.headers["Allow"] = "GET, POST, OPTIONS"
     response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"

@@ -33,7 +33,7 @@ class Medication < ActiveRecord::Base
   after_initialize :default_name
 
   def in_html_sitemap?
-    HTML_SITEMAP_FLAGS.include?(seo_flag)
+    HTML_SITEMAP_FLAGS.include?(seo_flag) && document.present?
   end
 
   def pathname
