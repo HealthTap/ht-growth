@@ -1,3 +1,5 @@
+require_relative '../app'
+
 url_map_file = ARGV[0]
 image_directory = ARGV[1]
 

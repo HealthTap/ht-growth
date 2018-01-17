@@ -9,7 +9,8 @@ class Medication < ActiveRecord::Base
     fields = %w[alcoholInteraction
                 availableGeneric
                 brandNames
-                clinicalDrugForms
+                brandedDoseForms
+                clinicalDoseForms
                 conditionsTreated
                 contraindicatedConditions
                 drugClasses
@@ -18,6 +19,8 @@ class Medication < ActiveRecord::Base
                 drugSchedule
                 drugScheduleDescription
                 formsWithUsage
+                hasOTC
+                ingredientIn
                 isPrescribable
                 name
                 generic
@@ -36,14 +39,20 @@ class Medication < ActiveRecord::Base
 
   # Data for comparison section between two drugs
   def comparison_values
+    data = contents.merge(
+      'normal_interactions' => normal_interactions,
+      'severe_interactions' => severe_interactions
+    )
     fields = %w[alcoholInteraction
                 brandNames
                 conditionsTreated
                 drugForms
+                drugInteractions
                 drugSchedule
                 name
-                pregnancyCategory]
-    api_values(fields, contents)
+                pregnancyCategory
+                severeDrugInteractions]
+    api_values(fields, data)
   end
 
   def compare_interactions(a,b)
@@ -65,10 +74,12 @@ class Medication < ActiveRecord::Base
       data['available_generic']
     when 'brandNames'
       RxcuiLookup.top_concepts(data['brand_names'], 5) || []
-    when 'clinicalDrugForms'
+    when 'brandedDoseForms'
+      data['branded_dose_form']&.map { |i| rxcui_lookups[i.to_i] } || []
+    when 'clinicalDoseForms'
       data['clinical_drug_dose_form']&.map { |i| rxcui_lookups[i.to_i] } || []
     when 'conditionsTreated'
-      data['ndfrt_conditions']&.values&.reduce(:+)&.map(&:downcase) || []
+      conditions(data)
     when 'contraindicatedConditions'
       data['contraindicated_conditions']&.values&.reduce(:+)&.map(&:downcase) || []
     when 'drugClasses'
@@ -88,6 +99,12 @@ class Medication < ActiveRecord::Base
           'usage' => m.contents.dig('free_text', 'dosage_instructions')
         }
       end
+    when 'hasOTC'
+      data['availiability'] == 'No prescription needed'
+    when 'ingredientIn'
+      puts 'ingredients'
+      puts data['ingredients'] # TODO: Need what is a member of
+      data['multiple_ingredients']&.map { |i| rxcui_lookups[i.to_i] } || []
     when 'isPrescribable'
       data['can_be_prescribed']
     when 'name'
@@ -114,7 +131,16 @@ class Medication < ActiveRecord::Base
     when 'topComparisonDrug' # TODO: top comparison drug
       top_comp = Medication.find_by_rxcui(data['similar_drugs']&.slice(0).dig('rxcui').to_i)
       comp_data = top_comp&.comparison_values || {}
-      comp_data['interaction comparison'] = compare_interactions(self, top_comp)
+      comparison_interactions = (comp_data['severeDrugInteractions'] + comp_data['drugInteractions']).to_set
+      main_interactions = (api_value('severeDrugInteractions', data, rxcui_lookups) + api_value('drugInteractions', data, rxcui_lookups)).to_set
+      comp_data['sharedInteractions'] = (comparison_interactions.intersection(main_interactions)).to_a
+      comp_data['comparisonInteractionsUnique'] = (comparison_interactions - main_interactions).to_a
+      comp_data['mainInteractionsUnique'] = (main_interactions - comparison_interactions).to_a
+      comparison_conditions = comp_data['conditionsTreated'].to_set
+      main_conditions = conditions(data).to_set
+      comp_data['sharedConditions'] = (comparison_conditions.intersection(main_conditions)).to_a
+      comp_data['comparisonConditionsUnique'] = (comparison_conditions - main_conditions).to_a
+      comp_data['mainConditionsUnique'] = (main_conditions - comparison_conditions).to_a
       comp_data
     when 'type'
       # data['concept_type']&.tr('_', ' ')
@@ -124,11 +150,15 @@ class Medication < ActiveRecord::Base
     end
   end
 
+  def conditions(data)
+    data['ndfrt_conditions']&.values&.reduce(:+)&.map(&:downcase) || []
+  end
+
   # Helpers for get_value ^^
   def drug_forms(data)
     forms = (data['branded_dose_form'] || []) +
             (data['clinical_drug_dose_form'] || [])
-    forms.slice(0, 5)
+    forms.slice(0, 10)
   end
 
   def severe_interactions
@@ -137,7 +167,7 @@ class Medication < ActiveRecord::Base
   end
 
   # Filters top n non-severe interactions
-  def normal_interactions(n = 5)
+  def normal_interactions(n = 15)
     medication_interactions.where("severity is null or severity != 'severe'")
                            .joins('inner join rxcui_lookups
                                    on rxcui_lookups.rxcui =

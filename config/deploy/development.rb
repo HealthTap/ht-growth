@@ -56,7 +56,7 @@ server 'nb3.healthtap.com', user: 'growth', roles: %w{web db}
 #     # password: "please use keys"
 #   }
 
-set :deploy_to, '/home/growth/guest-ws.healthtap.com'
+set :deploy_to, '/home/growth/guest-api-ws.healthtap.com'
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{log tmp/pids}
 
