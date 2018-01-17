@@ -60,12 +60,12 @@ class App < Sinatra::Base
   end
 
   get '/medications/:name' do
-    m = Medication.find_by_name(params[:name].tr('-', ' '))
+    m = Medication.friendly.find(params[:name])
     m&.overview
   end
 
   get '/medications/:name/:section' do
-    m = Medication.find_by_name(params[:name].tr('-', ' '))
+    m = Medication.friendly.find(params[:name])
     m&.get_section(params[:section])
   end
 

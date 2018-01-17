@@ -114,7 +114,7 @@ class Medication < ActiveRecord::Base
     resp = all_values
     resp['userQuestions'] = Healthtap::Api.search_questions(name)
     resp['breadcrumbs'] = HtmlSitemap.find_by_name('drug-classes')
-                                       &.breadcrumbs([resp['drugClasses'][0]])
+                                       &.breadcrumbs([resp['drugClasses'][0]]) || []
     resp['relatedQuestions'] = resp['userQuestions'].map do |q|
       { 'text' => q['question'], 'href' => q['url'] }
     end
