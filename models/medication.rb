@@ -29,11 +29,16 @@ class Medication < ActiveRecord::Base
   # whether it should appear on an html sitemap, xml sitemap,
   # whether to noindex the page, etc.
   HTML_SITEMAP_FLAGS = %w[good].freeze
+  LINKED_TO_FLAGS = %w[good].freeze # Whether we actively link to this page
 
   after_initialize :default_name
 
   def in_html_sitemap?
-    HTML_SITEMAP_FLAGS.include?(seo_flag) && document.present?
+    HTML_SITEMAP_FLAGS.include?(seo_flag)
+  end
+
+  def linked_to?
+    LINKED_TO_FLAGS.include?(seo_flag) && pathname
   end
 
   def pathname

@@ -26,15 +26,20 @@ class Medication < ActiveRecord::Base
                 generic
                 genericStrengths
                 overdoseWarning
+                pathname
                 photo
                 pregnancyCategory
                 pregnancyCategoryDescription
                 severeDrugInteractions
+                similarDrugs
                 synonyms
                 topComparisonDrug
                 type
+                url
                 warning]
-    api_vaues = api_values(fields, data)
+    api_values = api_values(fields, data)
+    api_values['hyperlinks'] = gather_hyperlinks(api_values)
+    api_values
   end
 
   # Data for comparison section between two drugs
@@ -55,18 +60,15 @@ class Medication < ActiveRecord::Base
     api_values(fields, data)
   end
 
-  def compare_interactions(a,b)
-  end
-
   def api_values(values, data)
-    lookups = generate_lookups(data)
     resp = {}
-    values.each { |v| resp[v] = api_value(v, data, lookups) }
+    values.each { |v| resp[v] = api_value(v, data) }
+    process_rxcuis(resp)
     resp
   end
 
   # Mapping from dynamo document to api value
-  def api_value(val, data, rxcui_lookups)
+  def api_value(val, data)
     case val
     when 'alcoholInteraction'
       data['alcohol_interaction']
@@ -75,9 +77,9 @@ class Medication < ActiveRecord::Base
     when 'brandNames'
       RxcuiLookup.top_concepts(data['brand_names'], 5) || []
     when 'brandedDoseForms'
-      data['branded_dose_form']&.map { |i| rxcui_lookups[i.to_i] } || []
+      data['branded_dose_form'] || []
     when 'clinicalDoseForms'
-      data['clinical_drug_dose_form']&.map { |i| rxcui_lookups[i.to_i] } || []
+      data['clinical_drug_dose_form'] || []
     when 'conditionsTreated'
       conditions(data)
     when 'contraindicatedConditions'
@@ -85,9 +87,9 @@ class Medication < ActiveRecord::Base
     when 'drugClasses'
       data['drug_classes'] || []
     when 'drugForms'
-      drug_forms(data).map { |i| rxcui_lookups[i.to_i] }
+      drug_forms(data) || []
     when 'drugInteractions'
-      data['normal_interactions'] || []
+      data['normal_interactions']&.uniq || []
     when 'drugSchedule'
       data['addiction_drug_schedule']
     when 'drugScheduleDescription'
@@ -102,19 +104,19 @@ class Medication < ActiveRecord::Base
     when 'hasOTC'
       data['availiability'] == 'No prescription needed'
     when 'ingredientIn'
-      puts 'ingredients'
-      puts data['ingredients'] # TODO: Need what is a member of
-      data['multiple_ingredients']&.map { |i| rxcui_lookups[i.to_i] } || []
+      data['multiple_ingredients'] || []
     when 'isPrescribable'
       data['can_be_prescribed']
     when 'name'
       data['name']
     when 'generic'
-      rxcui_lookups[data['active_compound_group'].to_i]
+      data['active_compound_group']
     when 'genericStrengths'
       data['available_strengths'] || []
     when 'overdoseWarning'
       data.dig('free_text', 'overdose')
+    when 'pathname'
+      pathname
     when 'photo'
       image_url
     when 'pregnancyCategory'
@@ -122,25 +124,27 @@ class Medication < ActiveRecord::Base
     when 'pregnancyCategoryDescription'
       Description.pregnancy(data['pregnancy_category'])
     when 'severeDrugInteractions'
-      data['severe_interactions'].map do |interaction|
-        rxcui_lookups[interaction.interacts_with_rxcui.to_i]
-      end || []
+      data['severe_interactions']&.uniq || []
+    when 'similarDrugs'
+      data['similar_drugs']&.map{ |d| d['rxcui'] }.compact || []
     when 'synonyms'
       canonical_name = data['canonical_name']&.downcase
-      canonical_name == name.downcase ? [] : [data['canonical_name']]
+      canonical_name.nil? || canonical_name == name.downcase ? [] : [data['canonical_name']]
     when 'topComparisonDrug' # TODO: top comparison drug
-      top_comp = Medication.find_by_rxcui(data['similar_drugs']&.slice(0).dig('rxcui').to_i)
+      top_comp = Medication.find_by_rxcui(data['similar_drugs']&.slice(0)&.dig('rxcui').to_i)
       comp_data = top_comp&.comparison_values || {}
-      comparison_interactions = (comp_data['severeDrugInteractions'] + comp_data['drugInteractions']).to_set
-      main_interactions = (api_value('severeDrugInteractions', data, rxcui_lookups) + api_value('drugInteractions', data, rxcui_lookups)).to_set
-      comp_data['sharedInteractions'] = (comparison_interactions.intersection(main_interactions)).to_a
-      comp_data['comparisonInteractionsUnique'] = (comparison_interactions - main_interactions).to_a
-      comp_data['mainInteractionsUnique'] = (main_interactions - comparison_interactions).to_a
-      comparison_conditions = comp_data['conditionsTreated'].to_set
-      main_conditions = conditions(data).to_set
-      comp_data['sharedConditions'] = (comparison_conditions.intersection(main_conditions)).to_a
-      comp_data['comparisonConditionsUnique'] = (comparison_conditions - main_conditions).to_a
-      comp_data['mainConditionsUnique'] = (main_conditions - comparison_conditions).to_a
+      unless comp_data.empty?
+        comparison_interactions = (comp_data['severeDrugInteractions'] + comp_data['drugInteractions']).to_set
+        main_interactions = (api_value('severeDrugInteractions', data) + api_value('drugInteractions', data)).to_set
+        comp_data['sharedInteractions'] = (comparison_interactions.intersection(main_interactions)).to_a
+        comp_data['comparisonInteractionsUnique'] = (comparison_interactions - main_interactions).to_a
+        comp_data['mainInteractionsUnique'] = (main_interactions - comparison_interactions).to_a
+        comparison_conditions = comp_data['conditionsTreated'].to_set
+        main_conditions = conditions(data).to_set
+        comp_data['sharedConditions'] = (comparison_conditions.intersection(main_conditions)).to_a
+        comp_data['comparisonConditionsUnique'] = (comparison_conditions - main_conditions).to_a
+        comp_data['mainConditionsUnique'] = (main_conditions - comparison_conditions).to_a
+      end
       comp_data
     when 'type'
       # data['concept_type']&.tr('_', ' ')
@@ -176,15 +180,25 @@ class Medication < ActiveRecord::Base
                            .order('-medication_interactions.rank desc,
                                    -rxcui_lookups.rank desc')
                            .limit(n)
-                           .pluck(:name)
+                           .pluck(:rxcui)
   end
 
-  # Preload the lookup table for rxcui mappings
-  # Do pre-processing of names here
-  # For example, if the name for rxcui=1 is too long, apply trimming rules
-  def generate_lookups(data)
+  # We want to tell client which medications can be hyperlinked to
+  def gather_hyperlinks(data)
+    rxcuis = data['rxcuis'] - [rxcui]
+    hyperlinks = {}
+    Medication.where(rxcui: rxcuis).each do |m|
+      hyperlinks[m.name.downcase] = m.pathname if m.linked_to?
+    end
+    hyperlinks
+  end
+
+  # Replace rxcuis w/ names
+  # Create hyperlink lookup for names which should be hyperlinked
+  # All numerics assumed to be medication instances
+  def process_rxcuis(data)
     rxcuis = []
-    gather_rxcui = lambda { |h|
+    gather_rxcui = lambda do |h|
       if h.is_a?(Numeric)
         rxcuis << h.to_i
       elsif h.is_a?(Array)
@@ -192,11 +206,32 @@ class Medication < ActiveRecord::Base
       elsif h.is_a?(Hash)
         h.each_value { |v| gather_rxcui.call(v) }
       end
-    }
+    end
     gather_rxcui.call(data)
     lookup_table = {}
     lookups = RxcuiLookup.where(rxcui: rxcuis).select(:rxcui, :name)
     lookups.each { |l| lookup_table[l.rxcui] = l.name }
-    lookup_table
+    replace_rxcui = lambda do |h|
+      if h.is_a?(Array)
+        h.each_with_index do |el, i|
+          if el.is_a?(Numeric)
+            h[i] = lookup_table[el.to_i]
+          else
+            replace_rxcui.call(el)
+          end
+        end
+      elsif h.is_a?(Hash)
+        h.each do |k, v|
+          next if k == 'rxcuis'
+          if v.is_a?(Numeric)
+            h[k] = lookup_table[v.to_i]
+          else
+            replace_rxcui.call(v)
+          end
+        end
+      end
+    end
+    replace_rxcui.call(data)
+    data['rxcuis'] = rxcuis
   end
 end

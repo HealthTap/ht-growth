@@ -70,7 +70,7 @@ module Healthtap
       return unless %w[name photo url].all? { |s| expert.key? s }
       medical_school = expert['medical_school']&.max_by do |s|
         s['year']&.to_i || 0
-      end['school']
+      end&.fetch('school')
       {
         'name' => expert['name'],
         'photo' => expert['photo'],
@@ -86,7 +86,7 @@ module Healthtap
     def self.answer_json(answer)
       answer_body = answer['long_text']
       author = answer['author']
-      return unless answer_body && author
+      return unless answer_body.present? && author.present?
       if answer['in_brief']
         delimiter = /[[:punct:]]/.match?(answer['in_brief'][-1]) ? ' ' : '. '
         answer_body = answer['in_brief'] + delimiter + answer_body
