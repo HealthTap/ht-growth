@@ -1,7 +1,7 @@
 # Get values for api response
 class Medication < ActiveRecord::Base
 
-  def all_values
+  def all_values(section = 'overview')
     data = contents.merge(
       'normal_interactions' => normal_interactions,
       'severe_interactions' => severe_interactions
@@ -18,26 +18,32 @@ class Medication < ActiveRecord::Base
                 drugInteractions
                 drugSchedule
                 drugScheduleDescription
-                formsWithUsage
                 hasOTC
                 ingredientIn
                 isPrescribable
                 name
                 generic
-                genericStrengths
+                genericStrength
                 overdoseWarning
                 pathname
                 photo
                 pregnancyCategory
                 pregnancyCategoryDescription
+                relatedSearches
                 severeDrugInteractions
                 similarDrugs
                 synonyms
                 topComparisonDrug
                 type
                 url
+                usage
                 warning]
     api_values = api_values(fields, data)
+    question_ids = related_questions.where(flag: section).pluck(:question_id)
+    api_values['userQuestions'] = Healthtap::Api.questions(question_ids)
+    api_values['relatedQuestions'] = api_values['userQuestions'].map do |q|
+      { 'text' => q['question'], 'href' => q['url'] }
+    end
     api_values['hyperlinks'] = gather_hyperlinks(api_values)
     api_values
   end
@@ -83,7 +89,7 @@ class Medication < ActiveRecord::Base
     when 'conditionsTreated'
       conditions(data)
     when 'contraindicatedConditions'
-      data['contraindicated_conditions']&.values&.reduce(:+)&.map(&:downcase) || []
+      data['contraindicated_conditions']&.values&.reduce(:+)&.map(&:downcase)&.uniq || []
     when 'drugClasses'
       data['drug_classes'] || []
     when 'drugForms'
@@ -94,13 +100,6 @@ class Medication < ActiveRecord::Base
       data['addiction_drug_schedule']
     when 'drugScheduleDescription'
       Description.substance_schedule(data['addiction_drug_schedule'])
-    when 'formsWithUsage'
-      Medication.where(rxcui: drug_forms(data)).map do |m|
-        {
-          'name' => m.name,
-          'usage' => m.contents.dig('free_text', 'dosage_instructions')
-        }
-      end
     when 'hasOTC'
       data['availiability'] == 'No prescription needed'
     when 'ingredientIn'
@@ -111,8 +110,8 @@ class Medication < ActiveRecord::Base
       data['name']
     when 'generic'
       data['active_compound_group']
-    when 'genericStrengths'
-      data['available_strengths'] || []
+    when 'genericStrength'
+      data['available_strengths'][0]
     when 'overdoseWarning'
       data.dig('free_text', 'overdose')
     when 'pathname'
@@ -123,10 +122,12 @@ class Medication < ActiveRecord::Base
       data['pregnancy_category']
     when 'pregnancyCategoryDescription'
       Description.pregnancy(data['pregnancy_category'])
+    when 'relatedSearches'
+      data['relatedSearches'] = related_searches.where(flag: data['section']).pluck(:search_string)
     when 'severeDrugInteractions'
       data['severe_interactions']&.uniq || []
     when 'similarDrugs'
-      data['similar_drugs']&.map{ |d| d['rxcui'] }.compact || []
+      data['similar_drugs']&.map { |d| d['rxcui'] }&.compact || []
     when 'synonyms'
       canonical_name = data['canonical_name']&.downcase
       canonical_name.nil? || canonical_name == name.downcase ? [] : [data['canonical_name']]
@@ -149,13 +150,17 @@ class Medication < ActiveRecord::Base
     when 'type'
       # data['concept_type']&.tr('_', ' ')
       data['active_compound_group'].to_i == rxcui ? 'generic drug' : 'brand'
+    when 'url'
+      pathname
+    when 'usage'
+      data.dig('free_text', 'dosage_instructions') || []
     when 'warning'
       data.dig('free_text', 'warnings_and_precautions')
     end
   end
 
   def conditions(data)
-    data['ndfrt_conditions']&.values&.reduce(:+)&.map(&:downcase) || []
+    data['ndfrt_conditions']&.values&.reduce(:+)&.map(&:downcase)&.uniq || []
   end
 
   # Helpers for get_value ^^

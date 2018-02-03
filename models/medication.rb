@@ -105,6 +105,36 @@ class Medication < ActiveRecord::Base
     document.overwrite(data)
   end
 
+  def upload_data_medication_only(data)
+    Medication.validate_json(data)
+    document.overwrite(data)
+  end
+
+  def upload_related(data)
+    related_questions.destroy_all
+    question_objects = []
+    data['related_questions'].each do |section, questions|
+      questions.each_with_index do |q, i|
+        question_objects << RelatedQuestion.new(rank: i, flag: section,
+                                                has_questions_id: id,
+                                                question_id: q)
+      end
+    end
+    RelatedQuestion.import question_objects
+    related_questions << question_objects
+    related_searches.destroy_all
+    search_objects = []
+    data['related_searches'].each do |section, searches|
+      searches.each_with_index do |s, i|
+        search_objects << RelatedSearch.new(rank: i, flag: section,
+                                            has_searches_id: id,
+                                            search_string: s)
+      end
+    end
+    RelatedSearch.import search_objects
+    related_searches << search_objects
+  end
+
   # We want to overwrite interactions if we get them wrong...
   # Expects an array of interaction groups
   def reset_interactions(interaction_pairs)
@@ -115,14 +145,10 @@ class Medication < ActiveRecord::Base
   # API get methods
 
   # All relevant content we need for a medication page
-  def overview
-    resp = all_values
-    resp['userQuestions'] = Healthtap::Api.search_questions(name)
+  def get_section(section)
+    resp = all_values(section)
     resp['breadcrumbs'] = HtmlSitemap.find_by_name('drug-classes')
-                                       &.breadcrumbs([resp['drugClasses'][0]]) || []
-    resp['relatedQuestions'] = resp['userQuestions'].map do |q|
-      { 'text' => q['question'], 'href' => q['url'] }
-    end
+                                       &.breadcrumbs([resp['drugClasses'][0]].compact) || []
     resp
   end
 end
