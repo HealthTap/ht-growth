@@ -62,7 +62,7 @@ set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/qa.rb"
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 set :unicorn_roles, %w{web}
 set :unicorn_rack_env, 'development'
-set :default_env, rack_env: 'qa'
+set :default_env, sinatra_env: 'qa'
 set :branch, 'master'
 
 # Unicorn control tasks
