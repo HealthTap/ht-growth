@@ -35,7 +35,6 @@ before_fork do |server, _worker|
       # someone else did our job for us
     end
   end
-  ENV['RACK_ENV'] = 'qa'
 end
 
 after_fork do |_server, _worker|
