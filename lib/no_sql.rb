@@ -6,7 +6,7 @@ module Healthtap
 
     def self.connection
       if @db.nil?
-        consul_settings = App.settings.consul_settings
+        consul_settings = App.settings.consul
         access_key_id = consul_settings[:aws][:access_key_id]
         secret_access_key = consul_settings[:aws][:secret_access_key]
         @db = ::Aws::DynamoDB::Client.new(region: 'us-west-1',

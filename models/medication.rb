@@ -145,7 +145,7 @@ class Medication < ActiveRecord::Base
   # API get methods
 
   # All relevant content we need for a medication page
-  def get_section(section)
+  def section(section)
     resp = all_values(section)
     resp['breadcrumbs'] = HtmlSitemap.find_by_name('drug-classes')
                                        &.breadcrumbs([resp['drugClasses'][0]].compact) || []

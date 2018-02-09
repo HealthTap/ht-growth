@@ -7,7 +7,7 @@ class ImageUploader
 
   def self.client
     if @s3_client.nil?
-      consul_settings = App.settings.consul_settings
+      consul_settings = App.settings.consul
       access_key_id = consul_settings[:aws][:access_key_id]
       secret_access_key = consul_settings[:aws][:secret_access_key]
       @s3_client = ::Aws::S3::Client.new(region: 'us-west-1',

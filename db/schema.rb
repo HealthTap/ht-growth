@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115190911) do
+ActiveRecord::Schema.define(version: 20180208014048) do
 
   create_table "concept_trees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -78,12 +78,24 @@ ActiveRecord::Schema.define(version: 20180115190911) do
     t.integer "rank"
     t.string "has_searches_type"
     t.bigint "has_searches_id"
+    t.string "slug"
     t.index ["has_searches_type", "has_searches_id"], name: "index_rs_on_hs_type_and_hs_id"
+    t.index ["slug"], name: "index_related_searches_on_slug", unique: true
   end
 
   create_table "rxcui_lookups", primary_key: "rxcui", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "name"
     t.integer "rank"
+  end
+
+  create_table "search_pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "seo_flag"
+    t.datetime "updated_at"
+    t.string "slug"
+    t.string "topic"
+    t.text "definition"
+    t.index ["slug"], name: "index_search_pages_on_slug", unique: true
   end
 
 end

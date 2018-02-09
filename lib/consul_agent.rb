@@ -12,7 +12,7 @@ module ConsulAgent
 
     DEFAULT_TIME_OUT = 5
 
-    def initialize(env, yml_config={})
+    def initialize(env, yml_config = {})
       @standalone_keys = [:local, :grpc]
       @env = env
       @yml_config = yml_config
@@ -32,7 +32,7 @@ module ConsulAgent
     end
 
     def get_from_cache(key)
-      return false unless @cache.has_key?(key)
+      return false unless @cache.key?(key)
       timestamp, value = @cache[key]
       return false if Time.now.to_i - timestamp > @ttl
       return true, value
@@ -41,8 +41,8 @@ module ConsulAgent
     def get_from_consul(key)
       result = nil
 
-      default_key = @standalone_keys.include?(key) ? "/#{key}/default" : "/next/default/#{key}"
-      env_key = @standalone_keys.include?(key) ? "/#{key}/#{@env}" : "/next/#{@env}/#{key}"
+      default_key = @standalone_keys.include?(key) ? "/#{key}/default" : "/ht-growth/default/#{key}"
+      env_key = @standalone_keys.include?(key) ? "/#{key}/#{@env}" : "/ht-growth/#{@env}/#{key}"
 
       [get_kv(default_key), get_kv(env_key), @yml_config[key]].each do |config|
         next if config.nil?

@@ -20,6 +20,7 @@ class Medication < ActiveRecord::Base
                 drugScheduleDescription
                 hasOTC
                 ingredientIn
+                isBrand
                 isPrescribable
                 name
                 generic
@@ -29,7 +30,6 @@ class Medication < ActiveRecord::Base
                 photo
                 pregnancyCategory
                 pregnancyCategoryDescription
-                relatedSearches
                 severeDrugInteractions
                 similarDrugs
                 synonyms
@@ -41,6 +41,7 @@ class Medication < ActiveRecord::Base
     api_values = api_values(fields, data)
     question_ids = related_questions.where(flag: section).pluck(:question_id)
     api_values['userQuestions'] = Healthtap::Api.questions(question_ids)
+    api_values['relatedSearches'] = related_searches.where(flag: section).map(&:as_json)
     api_values['relatedQuestions'] = api_values['userQuestions'].map do |q|
       { 'text' => q['question'], 'href' => q['url'] }
     end
@@ -81,6 +82,7 @@ class Medication < ActiveRecord::Base
     when 'availableGeneric'
       data['available_generic']
     when 'brandNames'
+      return [] if data['brand_names'][0] == data['rxcui']
       RxcuiLookup.top_concepts(data['brand_names'], 5) || []
     when 'brandedDoseForms'
       data['branded_dose_form'] || []
@@ -104,6 +106,8 @@ class Medication < ActiveRecord::Base
       data['availiability'] == 'No prescription needed'
     when 'ingredientIn'
       data['multiple_ingredients'] || []
+    when 'isBrand'
+      data['concept_type'] == 'brand_name'
     when 'isPrescribable'
       data['can_be_prescribed']
     when 'name'
@@ -122,8 +126,6 @@ class Medication < ActiveRecord::Base
       data['pregnancy_category']
     when 'pregnancyCategoryDescription'
       Description.pregnancy(data['pregnancy_category'])
-    when 'relatedSearches'
-      data['relatedSearches'] = related_searches.where(flag: data['section']).pluck(:search_string)
     when 'severeDrugInteractions'
       data['severe_interactions']&.uniq || []
     when 'similarDrugs'

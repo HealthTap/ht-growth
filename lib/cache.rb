@@ -8,7 +8,8 @@ module Healthtap
     @redis = nil
 
     def self.connection
-      @redis = Redis.new if @redis.nil?
+      redis_settings = App.settings.consul[:redis]
+      @redis = Redis.new(redis_settings) if @redis.nil?
       @redis
     end
 

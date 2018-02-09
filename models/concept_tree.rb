@@ -44,7 +44,7 @@ class ConceptTree < ActiveRecord::Base
       item = part.merge(Name: "#{name}-#{i}")
       Healthtap::NoSql.put_item(TABLE_NAME, item)
     end
-    old_num_items = num_items
+    old_num_items = num_items || 0
     update_attribute(:item_mapping, new_mapping)
     update_attribute(:num_items, sliced_hash.count)
     clear_items(num_items..old_num_items - 1) if old_num_items > num_items

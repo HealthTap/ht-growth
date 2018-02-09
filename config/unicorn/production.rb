@@ -1,5 +1,5 @@
 # define paths and filenames
-deploy_to = '/home/growth/guest.healthtap.com'
+deploy_to = '/home/growth/guest-production.healthtap.com'
 app_root = "#{deploy_to}/current"
 pid_file = "#{app_root}/tmp/pids/unicorn.pid"
 socket_file= "#{deploy_to}/shared/unicorn.sock"
@@ -23,21 +23,21 @@ before_exec do |server|
   ENV['BUNDLE_GEMFILE'] = "#{deploy_to}/current/Gemfile"
 end
 
-#before_fork do |server, worker|
-#  ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
-#
-#  # zero downtime deploy magic:
-#  # if unicorn is already running, ask it to start a new process and quit.
-#  if File.exist?(old_pid) && server.pid != old_pid
-#    begin
-#      Process.kill('QUIT', File.read(old_pid).to_i)
-#    rescue Errno::ENOENT, Errno::ESRCH
-#      # someone else did our job for us
-#    end
-#  end
-#end
+before_fork do |server, _worker|
+  ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
 
-#after_fork do |server, worker|
+  # zero downtime deploy magic:
+  # if unicorn is already running, ask it to start a new process and quit.
+  if File.exist?(old_pid) && server.pid != old_pid
+    begin
+      Process.kill('QUIT', File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+      # someone else did our job for us
+    end
+  end
+end
+
+after_fork do
   # re-establish activerecord connections.
-#  ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
-#end
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
+end

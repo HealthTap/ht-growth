@@ -31,11 +31,13 @@ class App < Sinatra::Base
   register Sinatra::ConfigFile
 
   config_file 'config/app_config.yml'
-  set :consul_settings,
-      ConsulAgent::HTTP.new(settings.environment,
-                            settings.send(settings.environment.to_s))
+
   set :nosql, settings.send(settings.environment.to_s)[:nosql]
   set :s3, settings.send(settings.environment.to_s)[:s3]
+  set :consul, ConsulAgent::HTTP.new(settings.environment,
+                                     settings.send(settings.environment.to_s))
+
+  set :database, settings.consul[:mysql].merge(adapter: 'mysql2')
 
   configure do
     enable :cross_origin
@@ -48,7 +50,7 @@ class App < Sinatra::Base
   end
 
   after do
-    if response.body.is_a?(Hash)
+    if response.body.is_a?(Hash) || settings.environment == :development
       body Oj.dump response.body.merge('success' => true)
     else
       body Oj.dump('success' => false)
@@ -59,14 +61,9 @@ class App < Sinatra::Base
     'success!'
   end
 
-  get '/medications/:name' do
-    m = Medication.friendly.find(params[:name])
-    m&.overview
-  end
-
   get '/medications/:name/:section' do
     m = Medication.friendly.find(params[:name])
-    m&.get_section(params[:section])
+    m&.section(params[:section])
   end
 
   get '/drug-classes' do
@@ -86,10 +83,10 @@ class App < Sinatra::Base
     }
   end
 
-  options "*" do
-    response.headers["Allow"] = "GET, POST, OPTIONS"
-    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
-    response.headers["Access-Control-Allow-Origin"] = "*"
+  options '*' do
+    response.headers['Allow'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token'
+    response.headers['Access-Control-Allow-Origin'] = '*'
     200
   end
 end

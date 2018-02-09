@@ -18,7 +18,6 @@
 # Don't use `:all`, it's a meta role.
 
 role :web, %w{growth@nb3.healthtap.com}
-role :db, %w{growth@nb3.healthtap.com}
 
 
 # Configuration

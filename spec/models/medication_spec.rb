@@ -56,7 +56,7 @@ describe Medication do
       name = medication_data['name']
       m = Medication.find_or_create_by(rxcui: rxcui, name: name)
       m.upload_data(medication_data)
-      expect(m.overview['name']).to eq('Acetaminophen')
+      expect(m.section('overview')['name']).to eq('Acetaminophen')
     end
   end
 end
