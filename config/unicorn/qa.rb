@@ -21,6 +21,7 @@ preload_app true
 # make sure that Bundler finds the Gemfile
 before_exec do |server|
   ENV['BUNDLE_GEMFILE'] = "#{deploy_to}/current/Gemfile"
+  ENV['RACK_ENV'] = 'qa'
 end
 
 before_fork do |server, _worker|
