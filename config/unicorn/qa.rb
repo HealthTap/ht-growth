@@ -19,9 +19,8 @@ stdout_path log_file
 preload_app true
 
 # make sure that Bundler finds the Gemfile
-before_exec do |server|
+before_exec do |_server|
   ENV['BUNDLE_GEMFILE'] = "#{deploy_to}/current/Gemfile"
-  ENV['RACK_ENV'] = 'qa'
 end
 
 before_fork do |server, _worker|
@@ -36,6 +35,7 @@ before_fork do |server, _worker|
       # someone else did our job for us
     end
   end
+  ENV['RACK_ENV'] = 'qa'
 end
 
 after_fork do |_server, _worker|
