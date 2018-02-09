@@ -20,7 +20,6 @@
 role :web, %w{growth@nb3.healthtap.com}
 role :db, %w{growth@nb3.healthtap.com}
 
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -57,7 +56,6 @@ server 'nb3.healthtap.com', user: 'growth', roles: %w{web db}
 #   }
 
 set :deploy_to, '/home/growth/guest-api-ws.healthtap.com'
-set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{log tmp/pids}
 
 set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/development.rb"
