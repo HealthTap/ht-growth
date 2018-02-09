@@ -37,7 +37,7 @@ before_fork do |server, _worker|
   end
 end
 
-after_fork do
+after_fork do |_server, _worker|
   # re-establish activerecord connections.
   ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
 end
