@@ -17,8 +17,7 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :web, %w{growth@nb3.healthtap.com}
-
+role :web, %w{growth@gst0.healthtap.com}
 
 
 # Configuration
@@ -47,7 +46,7 @@ role :web, %w{growth@nb3.healthtap.com}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server 'nb3.healthtap.com', user: 'growth', roles: %w{web}
+server 'gst0.healthtap.com', user: 'growth', roles: %w{web}
 #   ssh_options: {
 #     user: "user_name", # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
@@ -56,4 +55,24 @@ server 'nb3.healthtap.com', user: 'growth', roles: %w{web}
 #     # password: "please use keys"
 #   }
 
-set :deploy_to, '/home/growth/guest.healthtap.com'
+set :deploy_to, '/home/growth/guest-api-production.healthtap.com'
+set :linked_dirs, %w{log tmp/pids}
+
+set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/production.rb"
+set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
+set :unicorn_roles, %w{web}
+set :unicorn_rack_env, 'production'
+set :branch, 'master'
+
+# Unicorn control tasks
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+  task :start do
+    invoke 'unicorn:start'
+  end
+  task :stop do
+    invoke 'unicorn:stop'
+  end
+end

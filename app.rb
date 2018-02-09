@@ -22,7 +22,6 @@ end
 set :root, File.dirname(__FILE__)
 set :bind, '0.0.0.0'
 set :port, 80
-set :database_file, './config/database.yml'
 
 # API routes
 # Base uri is /api/guest
