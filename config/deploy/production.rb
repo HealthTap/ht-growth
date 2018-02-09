@@ -18,7 +18,7 @@
 # Don't use `:all`, it's a meta role.
 
 role :web, %w{growth@gst0.healthtap.com}
-
+role :db, %w{growth@gst0.healthtap.com}
 
 # Configuration
 # =============
@@ -46,7 +46,7 @@ role :web, %w{growth@gst0.healthtap.com}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server 'gst0.healthtap.com', user: 'growth', roles: %w{web}
+server 'gst0.healthtap.com', user: 'growth', roles: %w{web db}
 #   ssh_options: {
 #     user: "user_name", # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
@@ -62,7 +62,7 @@ set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/production.rb"
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 set :unicorn_roles, %w{web}
 set :unicorn_rack_env, 'deployment'
-set :rack_env, 'production'
+set :rack_env, :production
 set :branch, 'master'
 
 # Unicorn control tasks
