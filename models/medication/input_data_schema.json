@@ -144,6 +144,12 @@
                     "interacts_with_rxcui" : { "type" : "number" }
                 }
             }
+        },
+        "related_searches" : {
+            "type" : "object"
+        },
+        "related_questions" : {
+            "type" : "object",
         }
     }
 }

@@ -101,11 +101,14 @@ class Medication < ActiveRecord::Base
   def upload_data(data)
     Medication.validate_json(data)
     reset_interactions(data['drug_interactions'])
+    upload_related(data)
     data.delete('drug_interactions')
+    data.delete('related_questions')
+    data.delete('related_searches')
     document.overwrite(data)
   end
 
-  def upload_data_medication_only(data)
+  def upload_data_nosql_only(data)
     Medication.validate_json(data)
     document.overwrite(data)
   end

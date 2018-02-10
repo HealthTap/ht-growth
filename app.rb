@@ -30,28 +30,33 @@ class App < Sinatra::Base
   register Sinatra::ConfigFile
   config_file 'config/app_config.yml'
 
-  set :environment, ENV['SINATRA_ENV'] || 'development'
+  set :environment, ENV['SINATRA_ENV'] || :development
   set :nosql, settings.send(settings.environment.to_s)[:nosql]
   set :s3, settings.send(settings.environment.to_s)[:s3]
   set :consul, ConsulAgent::HTTP.new(settings.environment,
                                      settings.send(settings.environment.to_s))
   set :database, settings.consul[:mysql].merge(adapter: 'mysql2')
+  set :show_exceptions, false unless settings.environment == :development
 
   configure do
     enable :cross_origin
   end
 
   before do
-    # error 401 unless params[:api_key] == 'fake_key_replace_later'
+    # error 401 unless params[:api_key] == settings.consul[:api_key]
     response.headers['Access-Control-Allow-Origin'] = '*'
     content_type :json
   end
 
+  error 401 do
+    'wrong api key'
+  end
+
   after do
-    if response.body.is_a?(Hash) || settings.environment == :development
+    if response.body.is_a?(Hash)
       body Oj.dump response.body.merge('success' => true)
     else
-      body Oj.dump('success' => false)
+      body Oj.dump('success' => false, 'result' => response.body)
     end
   end
 
@@ -60,8 +65,12 @@ class App < Sinatra::Base
   end
 
   get '/medications/:name/:section' do
-    m = Medication.friendly.find(params[:name])
-    m&.section(params[:section])
+    begin
+      m = Medication.friendly.find(params[:name])
+      m&.section(params[:section])
+    rescue ActiveRecord::RecordNotFound
+      'medication not found'
+    end
   end
 
   get '/drug-classes' do
@@ -86,5 +95,10 @@ class App < Sinatra::Base
     response.headers['Access-Control-Allow-Headers'] = 'Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token'
     response.headers['Access-Control-Allow-Origin'] = '*'
     200
+  end
+
+  not_found do
+    status 404
+    'Not found'
   end
 end

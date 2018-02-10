@@ -19,7 +19,7 @@ stdout_path log_file
 preload_app true
 
 # make sure that Bundler finds the Gemfile
-before_exec do |server|
+before_exec do |_server|
   ENV['BUNDLE_GEMFILE'] = "#{deploy_to}/current/Gemfile"
 end
 

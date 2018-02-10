@@ -12,7 +12,7 @@ Dir.foreach(data_folder) do |f|
     name = medication_data['name']
     unless Medication.find_by_rxcui(rxcui)
       m = Medication.find_or_create_by(rxcui: rxcui, name: name)
-      m.upload_data_medication_only(medication_data)
+      m.upload_data(medication_data)
     end
     count += 1
     puts "#{count} files uploaded. Last file: #{rxcui}" if count % 100 == 1
