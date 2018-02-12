@@ -19,3 +19,5 @@ test:
 
 production:
   <<: *common_settings
+  nosql:
+    table_prefix: guest-production-
