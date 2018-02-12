@@ -149,7 +149,7 @@
             "type" : "object"
         },
         "related_questions" : {
-            "type" : "object",
+            "type" : "object"
         }
     }
 }
