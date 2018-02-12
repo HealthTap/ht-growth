@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208014048) do
+ActiveRecord::Schema.define(version: 20180212221453) do
 
   create_table "concept_trees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180208014048) do
     t.bigint "has_searches_id"
     t.string "slug"
     t.index ["has_searches_type", "has_searches_id"], name: "index_rs_on_hs_type_and_hs_id"
-    t.index ["slug"], name: "index_related_searches_on_slug", unique: true
+    t.index ["slug"], name: "index_related_searches_on_slug"
   end
 
   create_table "rxcui_lookups", primary_key: "rxcui", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
