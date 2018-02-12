@@ -6,3 +6,9 @@ RSpec::Core::RakeTask.new do |task|
   task.rspec_opts = ['-c', '-f progress', '-r ./spec/spec_helper.rb']
   task.pattern    = 'spec/**/*_spec.rb'
 end
+
+namespace :db do
+  task :load_config do
+    require "./app"
+  end
+end
