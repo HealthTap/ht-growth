@@ -89,7 +89,7 @@ module Healthtap
       return unless answer_body.present? && author.present?
       if answer['in_brief']
         delimiter = /[[:punct:]]/.match?(answer['in_brief'][-1]) ? ' ' : '. '
-        answer_body = answer['in_brief'] + delimiter + answer_body
+        answer_body = answer['in_brief']&.strip + delimiter + answer_body
       end
       answer_body += '.' unless /[[:punct:]]/.match?(answer_body[-1])
       author = expert_json(author)

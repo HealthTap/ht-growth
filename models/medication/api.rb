@@ -46,6 +46,8 @@ class Medication < ActiveRecord::Base
       { 'text' => q['question'], 'href' => q['url'] }
     end
     api_values['hyperlinks'] = gather_hyperlinks(api_values)
+    #api_values['titleTag'] =
+    #api_values['metaDescription'] =
     api_values
   end
 

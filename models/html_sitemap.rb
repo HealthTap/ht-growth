@@ -55,6 +55,9 @@ class HtmlSitemap < ActiveRecord::Base
   def breadcrumbs(path)
     url = "/#{SITEMAP_SUBDIRECTORY}/#{name}"
     crumbs = [{
+      'displayName' => 'Health',
+      'url' => '/'
+    }, {
       'displayName' => name.tr('-', ' '),
       'url' => url
     }]
