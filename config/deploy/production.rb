@@ -62,18 +62,22 @@ set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/production.rb"
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 set :unicorn_roles, %w{web}
 set :unicorn_rack_env, 'production'
-set :rack_env, 'production'
+set :default_env, rack_env: 'production'
 set :branch, 'master'
 
 # Unicorn control tasks
 namespace :deploy do
+
   task :restart do
-    invoke 'unicorn:restart'
+    run "if [ -f #{unicorn_pid} ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{current_path} && bundle exec unicorn -c #{unicorn_conf} -E #{unicorn_rack_env} -D; fi"
   end
+
   task :start do
-    invoke 'unicorn:start'
+    run "cd #{current_path} && bundle exec unicorn -c #{unicorn_conf} -E #{unicorn_rack_env} -D"
   end
+
   task :stop do
-    invoke 'unicorn:stop'
+    run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
   end
+
 end
