@@ -20,4 +20,4 @@ test:
 production:
   <<: *common_settings
   nosql:
-    table_prefix: guest-production-1
+    table_prefix: guest-production-l
