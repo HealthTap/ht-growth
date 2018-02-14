@@ -67,17 +67,13 @@ set :branch, 'master'
 
 # Unicorn control tasks
 namespace :deploy do
-
   task :restart do
-    run "if [ -f #{unicorn_pid} ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{current_path} && bundle exec unicorn -c #{unicorn_conf} -E #{unicorn_rack_env} -D; fi"
+    invoke 'unicorn:restart'
   end
-
   task :start do
-    run "cd #{current_path} && bundle exec unicorn -c #{unicorn_conf} -E #{unicorn_rack_env} -D"
+    invoke 'unicorn:start'
   end
-
   task :stop do
-    run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+    invoke 'unicorn:stop'
   end
-
 end
