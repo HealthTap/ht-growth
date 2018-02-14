@@ -30,7 +30,6 @@ class App < Sinatra::Base
   register Sinatra::ConfigFile
   config_file 'config/app_config.yml'
 
-  set :environment, ENV['SINATRA_ENV'] || :development
   set :nosql, settings.send(settings.environment.to_s)[:nosql]
   set :s3, settings.send(settings.environment.to_s)[:s3]
   set :consul, ConsulAgent::HTTP.new(settings.environment,
