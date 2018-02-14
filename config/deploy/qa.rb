@@ -17,8 +17,8 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :web, %w{growth@nb3.healthtap.com}
-role :db, %w{growth@nb3.healthtap.com}
+#role :web, %w{growth@nb3.healthtap.com}
+#role :db, %w{growth@nb3.healthtap.com}
 
 # Configuration
 # =============
@@ -46,7 +46,7 @@ role :db, %w{growth@nb3.healthtap.com}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server 'nb3.healthtap.com', user: 'growth', roles: %w{web db}
+server 'nb3.healthtap.com', user: 'growth', roles: %w{web app db}
 #   ssh_options: {
 #     user: "user_name", # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
@@ -62,6 +62,7 @@ set :unicorn_config_path, "#{deploy_to}/current/config/unicorn/qa.rb"
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 set :unicorn_roles, %w{web}
 set :unicorn_rack_env, 'qa'
+set :default_env, rack_env: 'qa'
 set :branch, 'master'
 
 # Unicorn control tasks
