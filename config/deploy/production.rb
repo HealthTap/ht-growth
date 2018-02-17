@@ -17,9 +17,9 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :web, %w{growth@gst0.healthtap.com}
+role :web, %w{growth@gst0.healthtap.com growth@gst1.healthtap.com}
+role :app, %w{growth@gst0.healthtap.com growth@gst1.healthtap.com}
 role :db, %w{growth@gst0.healthtap.com}
-role :app, %w{growth@gst0.healthtap.com}
 
 # Configuration
 # =============
@@ -47,7 +47,8 @@ role :app, %w{growth@gst0.healthtap.com}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server 'gst0.healthtap.com', user: 'growth', roles: %w{web app db}
+server 'gst0.healthtap.com', user: 'growth', roles: %w{web app db}, primary: true
+server 'gst1.healthtap.com', user: 'growth', roles: %w{web app}
 #   ssh_options: {
 #     user: "user_name", # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
