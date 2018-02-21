@@ -180,14 +180,18 @@ class Medication < ActiveRecord::Base
   end
 
   # Filters top n non-severe interactions
+  # The interaction pair has a rank based on importance, and the medication
+  # has a rank based on popularity (traffic estimate)
   def normal_interactions(n = 15)
     medication_interactions.where("severity is null or severity != 'severe'")
                            .joins('inner join rxcui_lookups
                                    on rxcui_lookups.rxcui =
                                    medication_interactions.
                                    interacts_with_rxcui')
-                           .order('-medication_interactions.rank desc,
-                                   -rxcui_lookups.rank desc')
+                           .order('medication_interactions.rank is null,
+                                   medication_interactions.rank asc,
+                                   rxcui_lookups.rank is null,
+                                   rxcui_lookups.rank asc')
                            .limit(n)
                            .pluck(:rxcui)
   end
