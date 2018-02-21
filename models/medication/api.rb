@@ -153,7 +153,7 @@ class Medication < ActiveRecord::Base
       comp_data
     when 'type'
       # data['concept_type']&.tr('_', ' ')
-      data['active_compound_group'].to_i == rxcui ? 'generic drug' : 'brand'
+      data['active_compound_group'].to_i == rxcui ? 'generic drug' : 'branded drug'
     when 'url'
       pathname
     when 'usage'

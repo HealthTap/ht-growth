@@ -63,7 +63,7 @@ class App < Sinatra::Base
     'success!'
   end
 
-  get '/medications/:name/:section' do
+  get '/drugs/:name/:section' do
     begin
       m = Medication.friendly.find(params[:name])
       m&.section(params[:section])
