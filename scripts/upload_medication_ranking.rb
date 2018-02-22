@@ -1,6 +1,6 @@
 require_relative '../app'
 
-ActiveRecord::Base.logger.level = 1
+# ActiveRecord::Base.logger.level = 1
 traffic_file = ARGV.first
 
 traffic_pairs = []
