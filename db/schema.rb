@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212221453) do
+ActiveRecord::Schema.define(version: 20180222202352) do
 
   create_table "concept_trees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20180212221453) do
     t.string "name"
     t.string "model"
     t.bigint "concept_tree_id"
+    t.string "display_name"
     t.index ["concept_tree_id"], name: "index_html_sitemaps_on_concept_tree_id"
   end
 
