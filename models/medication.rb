@@ -116,7 +116,7 @@ class Medication < ActiveRecord::Base
   def upload_related(data)
     related_questions.destroy_all
     question_objects = []
-    data['related_questions'].each do |section, questions|
+    data['related_questions']&.each do |section, questions|
       questions.each_with_index do |q, i|
         question_objects << RelatedQuestion.new(rank: i, flag: section,
                                                 has_questions_id: id,
@@ -127,7 +127,7 @@ class Medication < ActiveRecord::Base
     related_questions << question_objects
     related_searches.destroy_all
     search_objects = []
-    data['related_searches'].each do |section, searches|
+    data['related_searches']&.each do |section, searches|
       searches.each_with_index do |s, i|
         search_objects << RelatedSearch.new(rank: i, flag: section,
                                             has_searches_id: id,
