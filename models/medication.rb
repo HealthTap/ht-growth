@@ -21,7 +21,7 @@ class Medication < ActiveRecord::Base
 
   DOCUMENT_TABLE_NAME = 'medications'.freeze
   S3_FOLDER = 'medications'.freeze
-  HTML_PATH = '/health/medications'.freeze
+  HTML_PATH = '/health/drugs'.freeze
 
   # SEO flag should be used to encode behavior for SEO that the
   # medication generates
