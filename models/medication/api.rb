@@ -73,7 +73,21 @@ class Medication < ActiveRecord::Base
     resp = {}
     values.each { |v| resp[v] = api_value(v, data) }
     process_rxcuis(resp)
+    format_values(resp)
     resp
+  end
+
+  def format_values(resp)
+    if resp['brandedDoseForms']
+      resp['brandedDoseForms'].map! do |df|
+        df.gsub(/(#{resp['generic']})(.*)\[(.*)\]/i, '\3\2').strip # More readable name
+      end
+    end
+    if resp['clinicalDoseForms'] && resp['isBrand']
+      resp['clinicalDoseForms'].map! do |df|
+        df.gsub(resp['generic'], resp['name']).strip # More readable name
+      end
+    end
   end
 
   # Mapping from dynamo document to api value
