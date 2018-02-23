@@ -96,8 +96,10 @@ class Medication < ActiveRecord::Base
     update_attribute(:has_image, true)
   end
 
-  # API post methods
-
+  # Ask Jerry for json seeds
+  # Most fields are stored in a Document, which you can replay edits over
+  # MedicationInteractions, RelatedQuestions, and RelatedSearches are
+  # relationships in mysql
   def upload_data(data)
     Medication.validate_json(data)
     reset_interactions(data['drug_interactions'])
@@ -113,6 +115,8 @@ class Medication < ActiveRecord::Base
     document.overwrite(data)
   end
 
+  # Must always upload related questions and searches rather than using
+  # search service to control what appears on the page
   def upload_related(data)
     related_questions.destroy_all
     question_objects = []

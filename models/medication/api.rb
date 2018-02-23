@@ -197,7 +197,7 @@ class Medication < ActiveRecord::Base
   # The interaction pair has a rank based on importance, and the medication
   # has a rank based on popularity (traffic estimate)
   def normal_interactions(n = 15)
-    medication_interactions.where("severity is null or severity != 'severe'")
+    medication_interactions.where(severity: 'normal')
                            .joins('inner join rxcui_lookups
                                    on rxcui_lookups.rxcui =
                                    medication_interactions.
