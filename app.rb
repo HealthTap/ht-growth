@@ -77,7 +77,7 @@ class App < Sinatra::Base
   end
 
   get '/drug-classes/*' do |path|
-    { 'siteLinks' => HtmlSitemap.find_by_name('drug-classes')&.sitemap(path.split('/')), 'header' => path.tr('-', ' ') }
+    { 'siteLinks' => HtmlSitemap.find_by_name('drug-classes')&.sitemap(path.split('/')), 'header' => path.tr('-', ' ').titleize }
   end
 
   get '/static-values' do
