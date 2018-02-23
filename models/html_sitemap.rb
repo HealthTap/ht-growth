@@ -30,7 +30,7 @@ class HtmlSitemap < ActiveRecord::Base
       sitemap = model.where(model.primary_key => keys).map do |el|
         {
           'url' => el.pathname,
-          'display_name' => el.to_s
+          'display_name' => el.to_s.titleize
         }
       end
     else
@@ -38,7 +38,7 @@ class HtmlSitemap < ActiveRecord::Base
         next if k == 'display_name'
         {
           'url' => pathname(path, k),
-          'display_name' => v['display_name'] || k
+          'display_name' => (v['display_name'] || k)&.titleize
         }
       end.compact
     end
