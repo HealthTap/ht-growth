@@ -1,5 +1,5 @@
 class HtmlSitemap < ActiveRecord::Base
-  validates_presence_of :name, :model
+  validates_presence_of :name, :display_name, :model
   validates_uniqueness_of :name
   serialize :model, Class
 
@@ -58,7 +58,7 @@ class HtmlSitemap < ActiveRecord::Base
       'displayName' => 'Health',
       'url' => '/'
     }, {
-      'displayName' => name.tr('-', ' '),
+      'displayName' => display_name,
       'url' => url
     }]
     path.each do |directory|

@@ -73,11 +73,11 @@ class App < Sinatra::Base
   end
 
   get '/drug-classes' do
-    { 'siteLinks' => HtmlSitemap.find_by_name('drug-classes')&.sitemap }
+    { 'siteLinks' => HtmlSitemap.find_by_name('drug-classes')&.sitemap, 'header' => 'Drugs by Class' }
   end
 
   get '/drug-classes/*' do |path|
-    { 'siteLinks' => HtmlSitemap.find_by_name('drug-classes')&.sitemap(path.split('/')) }
+    { 'siteLinks' => HtmlSitemap.find_by_name('drug-classes')&.sitemap(path.split('/')), 'header' => path.tr('-', ' ') }
   end
 
   get '/static-values' do

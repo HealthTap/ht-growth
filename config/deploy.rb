@@ -2,7 +2,7 @@
 lock "~> 3.10.0"
 
 set :application, "guest_app"
-set :repo_url, "git@github.com:jerry-uejio/ht-growth.git"
+set :repo_url, "git@github.com:HealthTap/ht-growth.git"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
